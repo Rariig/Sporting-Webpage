@@ -11,7 +11,7 @@ namespace Data
     {
 
         public string GroupName { get; set; }
-        public int MembersAmount { get; set; }
+        public int? MembersAmount { get; set; }
         public CoachData Coach { get; set; }
         public AthleteData Athlete { get; set; }
     }
