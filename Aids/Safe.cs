@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class Safe {
         public static T Run<T>(Func<T> function, T valueOnException) {
             try {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class GetMember {
         public static string Name<TClass>(Expression<Func<TClass, object>> e)
             => Safe.Run(() => Name(e?.Body), string.Empty);

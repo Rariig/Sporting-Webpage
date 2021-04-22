@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class GetEnum {
 
         public static int Count<T>() => Count(typeof(T));

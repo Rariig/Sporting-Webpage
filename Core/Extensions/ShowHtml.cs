@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.Encodings.Web;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class ShowHtml {
         public static IHtmlContent Show<TModel, TResult>(
             this IHtmlHelper<TModel> h,

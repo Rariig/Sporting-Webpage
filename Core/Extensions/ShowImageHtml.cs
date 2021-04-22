@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.Encodings.Web;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class ShowImageHtml {
         internal static int defaultWidth =>100;
         public static IHtmlContent ShowImage<TModel, TResult>(

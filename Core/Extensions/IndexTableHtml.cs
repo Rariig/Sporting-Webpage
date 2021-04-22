@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class IndexTableHtml {
         internal static int defaultHeight = 50; 
         public static IHtmlContent RowButtons<TModel>(

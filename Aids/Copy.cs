@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class Copy {
         
         public static TTo Members<TFrom, TTo>(TFrom from, TTo to) =>

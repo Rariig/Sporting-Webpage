@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class GetRandom {
         public static sbyte Int8(sbyte min = sbyte.MinValue, sbyte max = sbyte.MaxValue)
             => Convert.ToSByte(rnd(min, max));

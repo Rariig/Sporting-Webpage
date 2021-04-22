@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class CreateNew {
         public static T Instance<T>() {
             static T F() {

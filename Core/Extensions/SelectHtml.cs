@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class SelectHtml {
         public static IHtmlContent Select<TModel, TResult>(
             this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, 

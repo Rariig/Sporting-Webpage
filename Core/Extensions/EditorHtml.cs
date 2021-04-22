@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class EditorHtml {
 
         public static IHtmlContent Editor<TModel, TResult>(

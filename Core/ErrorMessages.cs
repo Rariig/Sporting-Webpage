@@ -1,4 +1,4 @@
-﻿namespace Contoso.Core {
+﻿namespace SportEU.Core {
     public static class ErrorMessages {
         public static string ConcurrencyOnDelete =>
             "The record you attempted to delete "

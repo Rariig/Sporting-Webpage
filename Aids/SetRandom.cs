@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-namespace Contoso.Aids {
+namespace SportEU.Aids {
     public static class SetRandom {
 
         public static void Values(object o) {

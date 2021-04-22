@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
-namespace Contoso.Core.Extensions {
+namespace SportEU.Core.Extensions {
     public static class ShowTableHtml {
         public static IHtmlContent ShowTable<TModel, TResult>(
             this IHtmlHelper<TModel> h, Expression<Func<TModel, IEnumerable<TResult>>> e,
