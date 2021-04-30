@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Sporting_Webpage": {
+    "SportEU": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

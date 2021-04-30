@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sporting_Webpage
+namespace SportEU
 {
     public class Program
     {

@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-Sporting_Webpage-2DD64527-3BAC-4979-9186-6F40D2388355</UserSecretsId>
-    <RootNamespace>Sporting_Webpage</RootNamespace>
+    <UserSecretsId>aspnet-SportEU-2DD64527-3BAC-4979-9186-6F40D2388355</UserSecretsId>
+    <RootNamespace>SportEU</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
