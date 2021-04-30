@@ -10,5 +10,19 @@ namespace SportEU.Infra
             : base(options)
         {
         }
+
+        public DbSet<CoachData> Coaches { get; set; }
+        public DbSet<AthleteData> Athletes { get; set; }
+        public DbSet<GroupData> Groups { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CoachData>().ToTable("Courses");
+            modelBuilder.Entity<AthleteData>().ToTable("Athletes");
+            modelBuilder.Entity<GroupData>().ToTable("Groups");
+
+            /* modelBuilder.Entity<CourseAssignment>()
+            .HasKey(c => new { c.CourseID, c.InstructorID }); Võib mitu mitmele seose jaoks vaja minna.*/
+        }
     }
 }
