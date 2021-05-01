@@ -3,22 +3,8 @@
 @model SportEU.Pages.Athletes.AthletesModel
 
 @{
+    Layout = "_Create";
     ViewData["Title"] = "Create";
 }
 
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<div class="form-group">
-    <label asp-for="AthleteData.LastName" class="control-label"></label>
-    <input asp-for="AthleteData.LastName" class="form-control" />
-    <span asp-validation-for="AthleteData.LastName" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="AthleteData.FirstMidName" class="control-label"></label>
-    <input asp-for="AthleteData.FirstMidName" class="form-control" />
-    <span asp-validation-for="AthleteData.FirstMidName" class="text-danger"></span>
-</div>
-<div class="form-group">
-    <label asp-for="AthleteData.Strength" class="control-label"></label>
-    <input asp-for="AthleteData.Strength" class="form-control" />
-    <span asp-validation-for="AthleteData.Strength" class="text-danger"></span>
-</div>
+<partial name="_EditAthletes" />
