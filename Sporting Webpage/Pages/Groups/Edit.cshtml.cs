@@ -13,11 +13,11 @@ namespace SportEU.Pages.Groups
 {
     public class EditModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext _context;
+        private readonly SportEU.Infra.ApplicationDbContext db;
 
         public EditModel(SportEU.Infra.ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups.FirstOrDefaultAsync(m => m.Id == id);
+            GroupData = await db.Groups.FirstOrDefaultAsync(m => m.Id == id);
 
             if (GroupData == null)
             {
@@ -48,11 +48,11 @@ namespace SportEU.Pages.Groups
                 return Page();
             }
 
-            _context.Attach(GroupData).State = EntityState.Modified;
+            db.Attach(GroupData).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +71,7 @@ namespace SportEU.Pages.Groups
 
         private bool GroupDataExists(int id)
         {
-            return _context.Groups.Any(e => e.Id == id);
+            return db.Groups.Any(e => e.Id == id);
         }
     }
 }

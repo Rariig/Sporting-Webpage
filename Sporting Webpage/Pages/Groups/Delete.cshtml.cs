@@ -12,11 +12,11 @@ namespace SportEU.Pages.Groups
 {
     public class DeleteModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext _context;
+        private readonly SportEU.Infra.ApplicationDbContext db;
 
         public DeleteModel(SportEU.Infra.ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         [BindProperty]
@@ -29,7 +29,7 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups.FirstOrDefaultAsync(m => m.Id == id);
+            GroupData = await db.Groups.FirstOrDefaultAsync(m => m.Id == id);
 
             if (GroupData == null)
             {
@@ -45,12 +45,12 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups.FindAsync(id);
+            GroupData = await db.Groups.FindAsync(id);
 
             if (GroupData != null)
             {
-                _context.Groups.Remove(GroupData);
-                await _context.SaveChangesAsync();
+                db.Groups.Remove(GroupData);
+                await db.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");

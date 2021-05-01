@@ -18,6 +18,6 @@ namespace SportEU.Facade
 
         [DisplayName("Group")] public int GroupId { get; set; }
 
-        public byte[] RowVersion { get; set; }
+        /* public byte[] RowVersion { get; set; } */
     }
 }

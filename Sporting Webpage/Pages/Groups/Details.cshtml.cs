@@ -12,11 +12,11 @@ namespace SportEU.Pages.Groups
 {
     public class DetailsModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext _context;
+        private readonly SportEU.Infra.ApplicationDbContext db;
 
         public DetailsModel(SportEU.Infra.ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         public GroupData GroupData { get; set; }
@@ -28,7 +28,7 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups.FirstOrDefaultAsync(m => m.Id == id);
+            GroupData = await db.Groups.FirstOrDefaultAsync(m => m.Id == id);
 
             if (GroupData == null)
             {

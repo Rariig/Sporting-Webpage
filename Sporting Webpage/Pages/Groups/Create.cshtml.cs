@@ -12,11 +12,11 @@ namespace SportEU.Pages.Groups
 {
     public class CreateModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext _context;
+        private readonly SportEU.Infra.ApplicationDbContext db;
 
         public CreateModel(SportEU.Infra.ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         public IActionResult OnGet()
@@ -35,8 +35,8 @@ namespace SportEU.Pages.Groups
                 return Page();
             }
 
-            _context.Groups.Add(GroupData);
-            await _context.SaveChangesAsync();
+            db.Groups.Add(GroupData);
+            await db.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
