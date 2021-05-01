@@ -14,8 +14,11 @@ namespace Data
         public string FirstMidName { get; set; }
 
         // [DisplayFormat(NullDisplayText = "No Strength")] 
-        // vaja lisada veel mingi atribuut, et 1-100 oleks nt siia. atribuudid siis facade'i
+        [Range(1, 100,
+            ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Strength { get; set; }
+
+        public int? GroupId { get; set; }
         public ICollection<GroupData> Groups { get; set; }
     }
 

@@ -17,7 +17,10 @@
                 @Html.DisplayNameFor(model => model.GroupData[0].GroupName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GroupData[0].MembersAmount)
+                @Html.DisplayNameFor(model => model.GroupData[0].AthleteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupData[0].Coach)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.GroupData[0].RowVersion)
@@ -32,7 +35,10 @@
                 @Html.DisplayFor(modelItem => item.GroupName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MembersAmount)
+                @Html.DisplayFor(modelItem => item.AthleteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coach.FirstMidName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RowVersion)

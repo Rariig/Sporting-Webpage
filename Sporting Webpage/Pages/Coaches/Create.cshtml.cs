@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Data;
 using SportEU.Infra;
 
-namespace SportEU.Pages.Groups
+namespace SportEU.Pages.Coaches
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace SportEU.Pages.Groups
 
         public IActionResult OnGet()
         {
-        ViewData["CoachId"] = new SelectList(_context.Coaches, "Id", "FirstMidName");
             return Page();
         }
 
         [BindProperty]
-        public GroupData GroupData { get; set; }
+        public CoachData CoachData { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +35,7 @@ namespace SportEU.Pages.Groups
                 return Page();
             }
 
-            _context.Groups.Add(GroupData);
+            _context.Coaches.Add(CoachData);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

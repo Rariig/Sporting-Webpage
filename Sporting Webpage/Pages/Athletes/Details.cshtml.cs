@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using SportEU.Infra;
 
-namespace SportEU.Pages.Groups
+namespace SportEU.Pages.Athletes
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace SportEU.Pages.Groups
             _context = context;
         }
 
-        public GroupData GroupData { get; set; }
+        public AthleteData AthleteData { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,10 +28,9 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups
-                .Include(g => g.Coach).FirstOrDefaultAsync(m => m.Id == id);
+            AthleteData = await _context.Athletes.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupData == null)
+            if (AthleteData == null)
             {
                 return NotFound();
             }

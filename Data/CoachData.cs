@@ -14,8 +14,13 @@ namespace Data
         [Required]
         public string FirstMidName { get; set; }
         public DateTime HireDate { get; set; }
+
+        [Range(1, 15000,
+            ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Salary { get; set; }
 
-        public ICollection<GroupData> Groups { get; set; }
+        public int GroupId { get; set; }
+
+        public GroupData Groups { get; set; }
     }
 }

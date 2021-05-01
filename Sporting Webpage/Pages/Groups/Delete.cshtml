@@ -19,10 +19,16 @@
             @Html.DisplayFor(model => model.GroupData.GroupName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GroupData.MembersAmount)
+            @Html.DisplayNameFor(model => model.GroupData.AthleteId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GroupData.MembersAmount)
+            @Html.DisplayFor(model => model.GroupData.AthleteId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GroupData.Coach)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GroupData.Coach.FirstMidName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.GroupData.RowVersion)

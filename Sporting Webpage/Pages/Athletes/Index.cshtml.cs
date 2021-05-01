@@ -12,18 +12,18 @@ namespace SportEU.Pages.Athletes
 {
     public class IndexModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext db;
+        private readonly SportEU.Infra.ApplicationDbContext _context;
 
         public IndexModel(SportEU.Infra.ApplicationDbContext context)
         {
-            db = context;
+            _context = context;
         }
 
         public IList<AthleteData> AthleteData { get;set; }
 
         public async Task OnGetAsync()
         {
-            AthleteData = await db.Athletes.ToListAsync();
+            AthleteData = await _context.Athletes.ToListAsync();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model SportEU.Pages.Coaches.CoachesModel
+@model SportEU.Pages.Coaches.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -32,6 +32,11 @@
                 <label asp-for="CoachData.Salary" class="control-label"></label>
                 <input asp-for="CoachData.Salary" class="form-control" />
                 <span asp-validation-for="CoachData.Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.GroupId" class="control-label"></label>
+                <input asp-for="CoachData.GroupId" class="form-control" />
+                <span asp-validation-for="CoachData.GroupId" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="CoachData.Id" />
             <div class="form-group">

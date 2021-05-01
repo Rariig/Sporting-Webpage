@@ -11,8 +11,10 @@ namespace Data
     {
 
         public string GroupName { get; set; }
-        public int? MembersAmount { get; set; }
+
+        public int CoachId { get; set; }
+        public int AthleteId { get; set; }
         public CoachData Coach { get; set; }
-        public AthleteData Athlete { get; set; }
+        public ICollection<AthleteData> Athlete { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using SportEU.Infra;
 
-namespace SportEU.Pages.Groups
+namespace SportEU.Pages.Coaches
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace SportEU.Pages.Groups
         }
 
         [BindProperty]
-        public GroupData GroupData { get; set; }
+        public CoachData CoachData { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,14 +30,12 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups
-                .Include(g => g.Coach).FirstOrDefaultAsync(m => m.Id == id);
+            CoachData = await _context.Coaches.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupData == null)
+            if (CoachData == null)
             {
                 return NotFound();
             }
-           ViewData["CoachId"] = new SelectList(_context.Coaches, "Id", "FirstMidName");
             return Page();
         }
 
@@ -50,7 +48,7 @@ namespace SportEU.Pages.Groups
                 return Page();
             }
 
-            _context.Attach(GroupData).State = EntityState.Modified;
+            _context.Attach(CoachData).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +56,7 @@ namespace SportEU.Pages.Groups
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GroupDataExists(GroupData.Id))
+                if (!CoachDataExists(CoachData.Id))
                 {
                     return NotFound();
                 }
@@ -71,9 +69,9 @@ namespace SportEU.Pages.Groups
             return RedirectToPage("./Index");
         }
 
-        private bool GroupDataExists(int id)
+        private bool CoachDataExists(int id)
         {
-            return _context.Groups.Any(e => e.Id == id);
+            return _context.Coaches.Any(e => e.Id == id);
         }
     }
 }

@@ -19,6 +19,21 @@ namespace SportEU.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AthleteDataGroupData", b =>
+                {
+                    b.Property<int>("AthleteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AthleteId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("AthleteDataGroupData");
+                });
+
             modelBuilder.Entity("Data.AthleteData", b =>
                 {
                     b.Property<int>("Id")
@@ -29,6 +44,9 @@ namespace SportEU.Migrations
                     b.Property<string>("FirstMidName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -58,6 +76,9 @@ namespace SportEU.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
 
@@ -85,17 +106,14 @@ namespace SportEU.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AthleteId")
+                    b.Property<int>("AthleteId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CoachId")
+                    b.Property<int>("CoachId")
                         .HasColumnType("int");
 
                     b.Property<string>("GroupName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MembersAmount")
-                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -104,31 +122,36 @@ namespace SportEU.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AthleteId");
-
-                    b.HasIndex("CoachId");
+                    b.HasIndex("CoachId")
+                        .IsUnique();
 
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("Data.GroupData", b =>
+            modelBuilder.Entity("AthleteDataGroupData", b =>
                 {
-                    b.HasOne("Data.AthleteData", "Athlete")
-                        .WithMany("Groups")
-                        .HasForeignKey("AthleteId");
+                    b.HasOne("Data.AthleteData", null)
+                        .WithMany()
+                        .HasForeignKey("AthleteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Data.CoachData", "Coach")
-                        .WithMany("Groups")
-                        .HasForeignKey("CoachId");
-
-                    b.Navigation("Athlete");
-
-                    b.Navigation("Coach");
+                    b.HasOne("Data.GroupData", null)
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("Data.AthleteData", b =>
+            modelBuilder.Entity("Data.GroupData", b =>
                 {
-                    b.Navigation("Groups");
+                    b.HasOne("Data.CoachData", "Coach")
+                        .WithOne("Groups")
+                        .HasForeignKey("Data.GroupData", "CoachId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coach");
                 });
 
             modelBuilder.Entity("Data.CoachData", b =>

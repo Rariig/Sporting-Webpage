@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using SportEU.Infra;
 
-namespace SportEU.Pages.Groups
+namespace SportEU.Pages.Coaches
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace SportEU.Pages.Groups
         }
 
         [BindProperty]
-        public GroupData GroupData { get; set; }
+        public CoachData CoachData { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,9 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups
-                .Include(g => g.Coach).FirstOrDefaultAsync(m => m.Id == id);
+            CoachData = await _context.Coaches.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (GroupData == null)
+            if (CoachData == null)
             {
                 return NotFound();
             }
@@ -46,11 +45,11 @@ namespace SportEU.Pages.Groups
                 return NotFound();
             }
 
-            GroupData = await _context.Groups.FindAsync(id);
+            CoachData = await _context.Coaches.FindAsync(id);
 
-            if (GroupData != null)
+            if (CoachData != null)
             {
-                _context.Groups.Remove(GroupData);
+                _context.Coaches.Remove(CoachData);
                 await _context.SaveChangesAsync();
             }
 

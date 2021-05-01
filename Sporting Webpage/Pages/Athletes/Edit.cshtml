@@ -1,5 +1,5 @@
 ﻿@page
-@model SportEU.Pages.Athletes.AthletesModel
+@model SportEU.Pages.Athletes.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -27,6 +27,11 @@
                 <label asp-for="AthleteData.Strength" class="control-label"></label>
                 <input asp-for="AthleteData.Strength" class="form-control" />
                 <span asp-validation-for="AthleteData.Strength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AthleteData.GroupId" class="control-label"></label>
+                <input asp-for="AthleteData.GroupId" class="form-control" />
+                <span asp-validation-for="AthleteData.GroupId" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="AthleteData.Id" />
             <div class="form-group">

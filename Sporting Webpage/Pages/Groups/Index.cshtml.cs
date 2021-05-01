@@ -12,18 +12,19 @@ namespace SportEU.Pages.Groups
 {
     public class IndexModel : PageModel
     {
-        private readonly SportEU.Infra.ApplicationDbContext db;
+        private readonly SportEU.Infra.ApplicationDbContext _context;
 
         public IndexModel(SportEU.Infra.ApplicationDbContext context)
         {
-            db = context;
+            _context = context;
         }
 
         public IList<GroupData> GroupData { get;set; }
 
         public async Task OnGetAsync()
         {
-            GroupData = await db.Groups.ToListAsync();
+            GroupData = await _context.Groups
+                .Include(g => g.Coach).ToListAsync();
         }
     }
 }
