@@ -21,6 +21,6 @@ namespace Data
 
         public int GroupId { get; set; }
 
-        public GroupData Groups { get; set; }
+        public GroupData Group { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace SportEU.Infra
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CoachData>().ToTable("Courses");
+            modelBuilder.Entity<CoachData>().ToTable("Coaches");
             modelBuilder.Entity<AthleteData>().ToTable("Athletes");
             modelBuilder.Entity<GroupData>().ToTable("Groups");
 

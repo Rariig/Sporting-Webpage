@@ -24,12 +24,12 @@ namespace SportEU.Migrations
                     b.Property<int>("AthleteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GroupId")
+                    b.Property<int>("GroupsId")
                         .HasColumnType("int");
 
-                    b.HasKey("AthleteId", "GroupId");
+                    b.HasKey("AthleteId", "GroupsId");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("GroupsId");
 
                     b.ToTable("AthleteDataGroupData");
                 });
@@ -96,7 +96,7 @@ namespace SportEU.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Coaches");
                 });
 
             modelBuilder.Entity("Data.GroupData", b =>
@@ -138,7 +138,7 @@ namespace SportEU.Migrations
 
                     b.HasOne("Data.GroupData", null)
                         .WithMany()
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("GroupsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

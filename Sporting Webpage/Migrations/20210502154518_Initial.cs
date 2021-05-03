@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SportEU.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,7 @@ namespace SportEU.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Courses",
+                name: "Coaches",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -39,7 +39,7 @@ namespace SportEU.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
+                    table.PrimaryKey("PK_Coaches", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,9 +57,9 @@ namespace SportEU.Migrations
                 {
                     table.PrimaryKey("PK_Groups", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Groups_Courses_CoachId",
+                        name: "FK_Groups_Coaches_CoachId",
                         column: x => x.CoachId,
-                        principalTable: "Courses",
+                        principalTable: "Coaches",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -69,11 +69,11 @@ namespace SportEU.Migrations
                 columns: table => new
                 {
                     AthleteId = table.Column<int>(type: "int", nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: false)
+                    GroupsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AthleteDataGroupData", x => new { x.AthleteId, x.GroupId });
+                    table.PrimaryKey("PK_AthleteDataGroupData", x => new { x.AthleteId, x.GroupsId });
                     table.ForeignKey(
                         name: "FK_AthleteDataGroupData_Athletes_AthleteId",
                         column: x => x.AthleteId,
@@ -81,17 +81,17 @@ namespace SportEU.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AthleteDataGroupData_Groups_GroupId",
-                        column: x => x.GroupId,
+                        name: "FK_AthleteDataGroupData_Groups_GroupsId",
+                        column: x => x.GroupsId,
                         principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AthleteDataGroupData_GroupId",
+                name: "IX_AthleteDataGroupData_GroupsId",
                 table: "AthleteDataGroupData",
-                column: "GroupId");
+                column: "GroupsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Groups_CoachId",
@@ -112,7 +112,7 @@ namespace SportEU.Migrations
                 name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Coaches");
         }
     }
 }
