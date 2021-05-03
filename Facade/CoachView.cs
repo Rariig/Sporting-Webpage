@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Facade.Common;
 
 namespace SportEU.Facade
 {
-    public sealed class CoachView : NamedView
+    public sealed class CoachView : NamedEntityView
     {
 
         [DataType(DataType.Date)]

@@ -1,8 +1,8 @@
-﻿namespace SportEU.Core {
-    public interface IEntityData: IBaseEntity {
-        public new int Id { get; set; }
-        public new byte[] RowVersion { get; set; }
-    }
+﻿using SportEU.Core;
+public interface IEntityData : IBaseEntity
+{
+    public new string Id { get; set; }
+    public new byte[] RowVersion { get; set; }
 }
 
 

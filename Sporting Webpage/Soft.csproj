@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Pages\Pages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Athletes\" />
+    <Folder Include="Pages\Coaches\" />
+    <Folder Include="Pages\Groups\" />
+  </ItemGroup>
+
 </Project>
