@@ -1,6 +1,4 @@
-﻿using SportEU.Core;
-
-namespace SportEU.Facade {
+﻿namespace SportEU.Facade {
     public interface IBaseEntityView: IEntityData {
     }
 }

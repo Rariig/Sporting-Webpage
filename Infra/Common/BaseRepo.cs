@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contoso.Domain.Repos;
-using Data;
+using Data.Common;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Core;
 

@@ -1,24 +1,29 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Facade.Common;
 
 namespace SportEU.Facade
 {
-    public sealed class CoachView : NamedEntityView
+    public class CoachView : PersonEntityView
     {
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Hire Date")] public DateTime HireDate { get; set; }
+        [Display(Name = "Hiring Date")] 
+        public DateTime HireDate { get; set; }
 
 
         [DataType(DataType.Currency)]
-        [Column(TypeName = "money")] public decimal Salary { get; set; }
+        [Range(1, 15000, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        /* [Column(TypeName = "money")] */
+        [DisplayName("Salary")]
+        public decimal Salary { get; set; }
 
-        [DisplayName("Group")] public int GroupId { get; set; }
+        [DisplayName("Group")] 
+        public int GroupId { get; set; }
 
-        /* public byte[] RowVersion { get; set; } */
+        [Display(Name = "Group")]
+        public string GroupName { get; set; }
     }
 }
