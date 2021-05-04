@@ -1,7 +1,10 @@
-﻿using Data;
+﻿using System.Linq;
+using Data;
 using Domain.Repos;
 using Facade;
 using Infra;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
@@ -30,5 +33,9 @@ namespace Pages
             var d = Copy.Members(v, new CoachData());
             return new Coach(d);
         }
+
+        public SelectList Groups =>
+            new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
+                "Id", "Name", Item?.GroupId);
     }
 }
