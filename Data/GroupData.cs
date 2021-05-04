@@ -6,8 +6,8 @@ namespace Data
     public class GroupData : NamedEntityData
     {
 
-        public int CoachId { get; set; }
-        public int AthleteId { get; set; }
+        public string CoachId { get; set; }
+        public string AthleteId { get; set; }
 
 
         /* public CoachData Coach { get; set; }

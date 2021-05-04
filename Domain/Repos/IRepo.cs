@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Contoso.Domain.Repos
+namespace SportEU.Domain.Repos
 {
     public interface IRepo<T>
     {
