@@ -1,0 +1,70 @@
+﻿@page
+@model SportEU.Pages.Coaches.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CoachData</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CoachData.HireDate" class="control-label"></label>
+                <input asp-for="CoachData.HireDate" class="form-control" />
+                <span asp-validation-for="CoachData.HireDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.Salary" class="control-label"></label>
+                <input asp-for="CoachData.Salary" class="form-control" />
+                <span asp-validation-for="CoachData.Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.GroupId" class="control-label"></label>
+                <input asp-for="CoachData.GroupId" class="form-control" />
+                <span asp-validation-for="CoachData.GroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.LastName" class="control-label"></label>
+                <input asp-for="CoachData.LastName" class="form-control" />
+                <span asp-validation-for="CoachData.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.FirstMidName" class="control-label"></label>
+                <input asp-for="CoachData.FirstMidName" class="form-control" />
+                <span asp-validation-for="CoachData.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.Photo" class="control-label"></label>
+                <input asp-for="CoachData.Photo" class="form-control" />
+                <span asp-validation-for="CoachData.Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.ValidFrom" class="control-label"></label>
+                <input asp-for="CoachData.ValidFrom" class="form-control" />
+                <span asp-validation-for="CoachData.ValidFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachData.ValidTo" class="control-label"></label>
+                <input asp-for="CoachData.ValidTo" class="form-control" />
+                <span asp-validation-for="CoachData.ValidTo" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="CoachData.Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

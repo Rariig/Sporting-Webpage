@@ -9,7 +9,7 @@ namespace SportEU.Domain
     public sealed class Group : Named<GroupData>
     {
 
-        public List<string> NewAthletes { get; } = new();
+        public List<string> NewlyAssignedAthletes { get; } = new();
         public Group() : this(null) { }
 
         public Group(GroupData d) : base(d)
@@ -22,15 +22,15 @@ namespace SportEU.Domain
         internal Lazy<Coach> coach { get; }
         public Coach Coach => coach.Value;
 
-        public ICollection<AthleteData> Athlete { get; set; }
 
-       /*  public ICollection<Athlete> Athletes => Groups?.Select(x => x.Group).ToList();
-        public ICollection<Group> Groups => groups?.Value;
-        internal Lazy<ICollection<Group>> athletes { get; } */
+          /* public ICollection<Athlete> MovingAthletes => Athletes?.Select(x => x.Group).ToList();
+         public ICollection<Athlete> Athletes => athletes?.Value;
+         internal Lazy<ICollection<Athlete>> athletes { get; }  */
+     
 
         public void AddAthletes(string athleteId)
         {
-            if (athleteId is not null) NewAthletes?.Add(athleteId);
+            if (athleteId is not null) NewlyAssignedAthletes?.Add(athleteId);
         }
     }
 }
