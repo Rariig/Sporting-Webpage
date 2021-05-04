@@ -3,7 +3,7 @@
 
 namespace Data
 {
-    public class GroupData : NamedEntityData
+    public class GroupData : NamedData
     {
 
         public string CoachId { get; set; }

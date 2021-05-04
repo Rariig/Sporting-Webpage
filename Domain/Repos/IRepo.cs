@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain.Repos;
 
 namespace SportEU.Domain.Repos
 {
-    public interface IRepo<T>
+    public interface IRepo<T> : IPagedRepo, IFilteredRepo, IOrderedRepo
     {
         string ErrorMessage { get; }
         public T EntityInDb { get; }

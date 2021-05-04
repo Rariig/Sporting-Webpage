@@ -3,7 +3,7 @@ using Data.Common;
 
 namespace Data
 {
-    public class AthleteData : PersonEntityData
+    public class AthleteData : PersonData
     {
 
         // [DisplayFormat(NullDisplayText = "No Strength")] 

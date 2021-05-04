@@ -11,10 +11,10 @@ using SportEU.Core;
 namespace Infra.Common
 {
     public abstract class BaseRepo<TEntity, TData> : BaseRepo<TData>, IRepo<TEntity>
-       where TData : BaseEntityData, IEntityData, new()
+         where TData : BaseData, IEntityData, new()
     {
-        protected abstract TEntity toEntity(TData d);
-        protected abstract TData toData(TEntity e);
+        protected internal abstract TEntity toEntity(TData d);
+        protected internal abstract TData toData(TEntity e);
         protected BaseRepo(DbContext c = null, DbSet<TData> s = null) : base(c, s) { }
         public new TEntity EntityInDb => toEntity(base.EntityInDb);
         public async new Task<List<TEntity>> Get() => (await base.Get()).Select(toEntity).ToList();
@@ -25,7 +25,7 @@ namespace Infra.Common
         public new TEntity GetById(string id) => toEntity(base.GetById(id));
     }
 
-    public abstract class BaseRepo<T> : IRepo<T> where T : BaseEntityData, IEntityData, new()
+    public abstract class BaseRepo<T> : IRepo<T> where T : BaseData, IEntityData, new()
     {
         protected internal readonly DbSet<T> dbSet;
         protected internal readonly DbContext db;
@@ -39,14 +39,12 @@ namespace Infra.Common
         }
         public async Task<List<T>> Get() => await createSql().ToListAsync();
         protected internal virtual IQueryable<T> createSql() => dbSet.AsNoTracking();
-
         public async Task<T> Get(string id)
         {
             if (id is null) return null;
             if (dbSet is null) return null;
             return await dbSet.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
         }
-
         public async Task<bool> Delete(T obj)
         {
             var isOk = await isEntityOk(obj, ErrorMessages.ConcurrencyOnDelete);
@@ -54,7 +52,6 @@ namespace Infra.Common
             await db.SaveChangesAsync();
             return isOk;
         }
-
         public async Task<bool> Add(T obj)
         {
             var isOk = await isEntityOk(obj, true);
@@ -62,7 +59,6 @@ namespace Infra.Common
             await db.SaveChangesAsync();
             return isOk;
         }
-
         public async Task<bool> Update(T obj)
         {
             var isOk = await isEntityOk(obj, ErrorMessages.ConcurrencyOnEdit);
@@ -70,25 +66,20 @@ namespace Infra.Common
             await db.SaveChangesAsync();
             return isOk;
         }
-
         public T GetById(string id) => Get(id).GetAwaiter().GetResult();
-
         internal static bool byteArrayCompare(ReadOnlySpan<byte> a1, ReadOnlySpan<byte> a2)
             => a1.SequenceEqual(a2);
-
         private bool errorMessage(string msg)
         {
             ErrorMessage = msg;
             return false;
         }
-
         internal async Task<bool> isEntityOk(T obj,
             string concurrencyErrorMsg)
         {
             return await isEntityOk(obj, false)
                    && isCorrectVersion(obj, concurrencyErrorMsg);
         }
-
         private async Task<bool> isEntityOk(T obj, bool isNewItem)
         {
             if (obj is null) return errorMessage("Item is null");
@@ -100,20 +91,21 @@ namespace Infra.Common
                            ? $"Item with id = <{obj.Id}> already in database"
                            : $"No item with id = <{obj.Id}> in database");
         }
-
         internal bool isCorrectVersion(T obj,
             string concurrencyErrorMsg)
         {
             return byteArrayCompare(obj?.RowVersion, EntityInDb?.RowVersion)
                    || errorMessage(concurrencyErrorMsg);
         }
-
-        public abstract int PageIndex { get; set; }
+        public abstract int? PageIndex { get; set; }
         public abstract int TotalPages { get; }
         public abstract bool HasNextPage { get; }
         public abstract bool HasPreviousPage { get; }
         public abstract int PageSize { get; set; }
         public abstract string CurrentFilter { get; set; }
         public abstract string SearchString { get; set; }
+        public abstract string SortOrder { get; set; }
+
+        public abstract string CurrentSort { get; }
     }
 }

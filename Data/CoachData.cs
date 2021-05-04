@@ -5,7 +5,7 @@ using Data.Common;
 
 namespace Data
 {
-    public class CoachData : PersonEntityData
+    public class CoachData : PersonData
     {
         public DateTime HireDate { get; set; }
 

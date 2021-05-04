@@ -11,7 +11,7 @@ namespace Domain.Common
         public string FullName { get; }
     }
     public abstract class Person<TData> : BaseEntity<TData>, IPersonEntity
-        where TData : PersonEntityData, new()
+        where TData : PersonData, new()
     {
         protected Person() : this(null) { }
         protected Person(TData d) : base(d) { }
