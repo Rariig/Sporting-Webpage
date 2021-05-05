@@ -1,75 +1,8 @@
 ﻿@page
-@model SportEU.Pages.Athletes.EditModel
+@model SportEU.Pages.AthletesPage
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "_Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>AthleteData</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AthleteData.StartingDate" class="control-label"></label>
-                <input asp-for="AthleteData.StartingDate" class="form-control" />
-                <span asp-validation-for="AthleteData.StartingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.Strength" class="control-label"></label>
-                <input asp-for="AthleteData.Strength" class="form-control" />
-                <span asp-validation-for="AthleteData.Strength" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.GroupId" class="control-label"></label>
-                <input asp-for="AthleteData.GroupId" class="form-control" />
-                <span asp-validation-for="AthleteData.GroupId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.CoachId" class="control-label"></label>
-                <input asp-for="AthleteData.CoachId" class="form-control" />
-                <span asp-validation-for="AthleteData.CoachId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.LastName" class="control-label"></label>
-                <input asp-for="AthleteData.LastName" class="form-control" />
-                <span asp-validation-for="AthleteData.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.FirstMidName" class="control-label"></label>
-                <input asp-for="AthleteData.FirstMidName" class="form-control" />
-                <span asp-validation-for="AthleteData.FirstMidName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.Photo" class="control-label"></label>
-                <input asp-for="AthleteData.Photo" class="form-control" />
-                <span asp-validation-for="AthleteData.Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.ValidFrom" class="control-label"></label>
-                <input asp-for="AthleteData.ValidFrom" class="form-control" />
-                <span asp-validation-for="AthleteData.ValidFrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AthleteData.ValidTo" class="control-label"></label>
-                <input asp-for="AthleteData.ValidTo" class="form-control" />
-                <span asp-validation-for="AthleteData.ValidTo" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="AthleteData.Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<partial name="_EditAthlete" />

@@ -1,16 +1,17 @@
 ﻿using Data;
+using Domain.Common;
 using Domain.Repos;
 using Facade;
 using Infra;
-using Pages.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
-using SportEU.Facade;
 using SportEU.Infra;
 
-namespace Pages
+namespace SportEU.Pages
 {
-    class AthletesPage : ViewPage<Athlete,AthleteView>
+    public class AthletesPage : ViewPage<Athlete,AthleteView>
     {
         public override string PageTitle => "Athletes";
 
@@ -21,6 +22,8 @@ namespace Pages
         {
             if (isNull(a)) return null;
             var v = Copy.Members(a.Data, new AthleteView());
+            v.FullName = a.FullName;
+            //v.GroupName = a.Group?.Name;
             return v;
         }
 
@@ -29,5 +32,15 @@ namespace Pages
             var d = Copy.Members(v, new AthleteData());
             return new Athlete(d);
         }
+
+       /* public SelectList Group
+        
+        {
+            get
+            {
+                var l = new GetRepo().Instance<IGroupsRepo>().Get();
+                return new SelectList(l, "Id", "Name", Item?.GroupId);
+            }
+        } */
     } 
 }

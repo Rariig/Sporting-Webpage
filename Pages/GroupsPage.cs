@@ -5,12 +5,12 @@ using Facade;
 using Infra;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pages.Common;
+using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
 using SportEU.Infra;
 
-namespace Pages
+namespace SportEU.Pages
 {
     public class GroupsPage : ViewPage<Group, GroupView>
     {
@@ -31,11 +31,19 @@ namespace Pages
         protected internal override Group toEntity(GroupView v)
         {
             var d = Copy.Members(v, new GroupData());
-            return new Group(d);
+            var obj = new Group(d);
+            if (v?.Athletes is null) return obj;
+            foreach (var c in v.Athletes) obj.AddAthlete(c?.Id);
+            return obj;
         }
+
 
         public SelectList Coaches =>
             new(context.Coaches.OrderBy(x => x.LastName).AsNoTracking(),
                 "Id", "LastName", Item?.CoachId);
+        public SelectList Athletes =>
+            new(context.Athletes.OrderBy(x => x.LastName).AsNoTracking(),
+                "Id", "LastName", Item?.Id);
+
     }
 }

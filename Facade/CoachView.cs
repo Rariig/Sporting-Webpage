@@ -5,7 +5,7 @@ using Facade.Common;
 
 namespace SportEU.Facade
 {
-    public class CoachView : PersonEntityView
+    public class CoachView : PersonView
     {
 
         [DataType(DataType.Date)]

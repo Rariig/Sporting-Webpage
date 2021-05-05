@@ -5,7 +5,7 @@ using Facade.Common;
 
 namespace Facade
 {
-    public class AthleteView :PersonEntityView
+    public class AthleteView :PersonView
     {
 
         [DataType(DataType.Date)]
@@ -18,16 +18,12 @@ namespace Facade
             ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Strength { get; set; }
 
-        [DisplayName("Group")] 
-        public int GroupId { get; set; }
+        [DisplayName("Group")] public string GroupId { get; set; }
 
-        [Display(Name = "Group")]
-        public string GroupName { get; set; }
+        [Display(Name = "Group")] public string GroupName { get; set; }
 
-        [DisplayName("Coach")]
-        public string CoachId { get; set; }
+        [DisplayName("Coach")] public string CoachId { get; set; }
 
-        [Display(Name = "Coach")]
-        public string CoachName { get; set; }
+        [Display(Name = "Coach")] public string CoachName { get; set; }
     }
 }

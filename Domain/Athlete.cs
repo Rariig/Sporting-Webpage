@@ -1,6 +1,7 @@
 ﻿using System;
 using Data;
 using Domain.Common;
+using Domain.Repos;
 
 namespace SportEU.Domain
 {
@@ -10,13 +11,17 @@ namespace SportEU.Domain
 
         public Athlete(AthleteData d) : base(d)
         {
-
+             //group = getLazy<Group, IGroupsRepo>(x => x?.Get(GroupId));
         }
 
+        //public string GroupId => Data?.GroupId ?? "Unspecified";
+
+        //public Group Group => group.Value;
+        //internal Lazy<Group> group { get; }
 
         public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;
-        public string GroupId { get; set; }
-        public string CoachId { get; set; }
+        public string CoachId => Data?.CoachId ?? "Unspecified";
+
     }
 }

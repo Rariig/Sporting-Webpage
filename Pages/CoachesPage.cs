@@ -5,15 +5,15 @@ using Facade;
 using Infra;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Pages.Common;
+using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
 using SportEU.Facade;
 using SportEU.Infra;
 
-namespace Pages
+namespace SportEU.Pages
 {
-    class CoachesPage : ViewPage<Coach, CoachView>
+    public class CoachesPage : ViewPage<Coach, CoachView>
     {
         public override string PageTitle => "Coaches";
 

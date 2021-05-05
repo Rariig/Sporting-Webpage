@@ -28,9 +28,12 @@ namespace SportEU.Domain
          internal Lazy<ICollection<Athlete>> athletes { get; }  */
      
 
-        public void AddAthletes(string athleteId)
+        public void AddAthlete(string athleteId)
         {
             if (athleteId is not null) NewlyAssignedAthletes?.Add(athleteId);
         }
+
+
+
     }
 }

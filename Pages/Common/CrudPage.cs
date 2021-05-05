@@ -3,7 +3,7 @@ using SportEU.Core;
 using SportEU.Domain.Repos;
 using SportEU.Infra;
 
-namespace Pages.Common
+namespace SportEU.Pages.Common
 {
     public abstract class CrudPage<TEntity, TView> : BasePage<TEntity, TView>
         where TEntity : class, IBaseEntity, new()

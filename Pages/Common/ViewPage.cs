@@ -8,7 +8,7 @@ using SportEU.Core;
 using SportEU.Domain.Repos;
 using SportEU.Infra;
 
-namespace Pages.Common
+namespace SportEU.Pages.Common
 {
     public abstract class ViewPage<TEntity, TView> : PagedPage<TEntity, TView>
         where TEntity : class, IBaseEntity, new()

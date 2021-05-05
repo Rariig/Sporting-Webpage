@@ -4,7 +4,7 @@ using SportEU.Facade;
 
 namespace Facade.Common
 {
-    public class PersonEntityView : BaseEntityView
+    public class PersonView : BaseView
     {
         [Required]
         [StringLength(50)]

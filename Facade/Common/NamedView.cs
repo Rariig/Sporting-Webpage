@@ -4,7 +4,7 @@ using SportEU.Facade;
 
 namespace Facade.Common
 {
-    public abstract class NamedEntityView : BaseEntityView
+    public abstract class NamedView : BaseView
     {
         [StringLength(50, MinimumLength = 3)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z -']*$")]

@@ -1,5 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using SportEU.Core.Extensions
+@model SportEU.Pages.AthletesPage
+
+@Html.Editor(model => model.Item.LastName)
+@Html.Editor(model => model.Item.FirstMidName)
+@Html.Editor(model => model.Item.StartingDate)
+@Html.Editor(model => model.Item.Strength)
+@*@@Html.Select(model => model.Item.GroupId,
+    Model.Group, "-- Select Department --")*@

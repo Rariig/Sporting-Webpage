@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SportEU.Core;
 using SportEU.Infra;
 
-namespace Pages.Common
+namespace SportEU.Pages.Common
 {
    public abstract class BasePage :PageModel, IBasePage {
         public string ErrorMessage { get; protected set; }
