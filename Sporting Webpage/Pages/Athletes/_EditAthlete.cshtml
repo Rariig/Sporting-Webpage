@@ -5,5 +5,31 @@
 @Html.Editor(model => model.Item.FirstMidName)
 @Html.Editor(model => model.Item.StartingDate)
 @Html.Editor(model => model.Item.Strength)
+
+<div class="form-group">
+    <div class="table">
+        <table>
+            <tr>
+            @{
+                int cnt = 0;
+                foreach (var group in Model.Groups)
+                {
+                    if (cnt++ % 3 == 0)
+                    {
+                        @:</tr><tr>
+                    }
+                    @:<td>
+                    <input type="checkbox"
+                           name="selectedCourses"
+                           value="@group.Value"
+                           @(Html.Raw(Model.IsAssigned(group) ? "checked=\"checked\"" : "")) />
+                    @group.Text
+                    @:</td>
+                }
+                @:</tr>
+            }
+        </table>
+    </div>
+</div>
 @*@@Html.Select(model => model.Item.GroupId,
     Model.Group, "-- Select Department --")*@

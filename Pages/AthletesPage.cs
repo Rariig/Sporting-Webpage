@@ -1,9 +1,11 @@
-﻿using Data;
+﻿using System.Linq;
+using Data;
 using Domain.Common;
 using Domain.Repos;
 using Facade;
 using Infra;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
@@ -33,14 +35,13 @@ namespace SportEU.Pages
             return new Athlete(d);
         }
 
-       /* public SelectList Group
-        
-        {
-            get
-            {
-                var l = new GetRepo().Instance<IGroupsRepo>().Get();
-                return new SelectList(l, "Id", "Name", Item?.GroupId);
-            }
-        } */
+        public SelectList Groups =>
+            new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
+                "Id", "Name");
+
+        public bool IsAssigned(SelectListItem item)
+            => Item?.AthleteGroups?
+                .FirstOrDefault(x =>
+                    x.CourseId == item.Value) is not null;
     } 
 }

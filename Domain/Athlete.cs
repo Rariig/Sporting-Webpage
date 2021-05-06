@@ -17,7 +17,7 @@ namespace SportEU.Domain
         //public string GroupId => Data?.GroupId ?? "Unspecified";
 
         //public Group Group => group.Value;
-        //internal Lazy<Group> group { get; }
+        //internal Lazy<Group> group { get; } gruppe peaks saama ikka tickboxiga lisada siin vist
 
         public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;
