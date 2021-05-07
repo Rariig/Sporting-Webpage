@@ -41,6 +41,6 @@ namespace SportEU.Pages
         public bool IsAssigned(SelectListItem item)
             => Item?.AthleteGroups?
                 .FirstOrDefault(x =>
-                    x.CourseId == item.Value) is not null;
+                    x.GroupId == item.Value) is not null;
     } 
 }

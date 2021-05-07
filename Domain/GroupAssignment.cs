@@ -10,7 +10,7 @@ namespace SportEU.Domain
         public GroupAssignment() : this(null) { }
 
         public GroupAssignment(GroupAssignmentData d) : base(d)
-        => group = getLazy<Group, IGroupsRepo>(x => x?.Get(GroupId));
+        => group = getLazy<Group, IGroupsRepo>(x => x?.GetById(GroupId));
 
         public string GroupId => Data?.GroupId ?? "Unspecified";
 

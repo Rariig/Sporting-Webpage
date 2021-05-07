@@ -11,7 +11,7 @@ namespace SportEU.Domain
 
         public Coach(CoachData d) : base(d)
         {
-            group = getLazy<Group, IGroupsRepo>(x => x?.Get(GroupId));
+            group = getLazy<Group, IGroupsRepo>(x => x?.GetById(GroupId));
         }
 
 
