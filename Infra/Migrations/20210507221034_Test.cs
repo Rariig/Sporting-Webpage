@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SportEU.Infra.Migrations
+namespace Infra.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,6 @@ namespace SportEU.Infra.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     StartingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Strength = table.Column<int>(type: "int", nullable: false),
-                    GroupId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CoachId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     FirstMidName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -49,6 +47,20 @@ namespace SportEU.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GroupAssignments",
+                columns: table => new
+                {
+                    AthleteId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    GroupId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroupAssignments", x => new { x.GroupId, x.AthleteId });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Groups",
                 columns: table => new
                 {
@@ -71,6 +83,9 @@ namespace SportEU.Infra.Migrations
 
             migrationBuilder.DropTable(
                 name: "Coaches");
+
+            migrationBuilder.DropTable(
+                name: "GroupAssignments");
 
             migrationBuilder.DropTable(
                 name: "Groups");

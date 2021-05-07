@@ -14,7 +14,7 @@ namespace SportEU.Infra
         public DbSet<CoachData> Coaches { get; set; }
         public DbSet<AthleteData> Athletes { get; set; }
         public DbSet<GroupData> Groups { get; set; }
-        public DbSet<GroupAssignmentData> CourseAssignments { get; set; }
+        public DbSet<GroupAssignmentData> GroupAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,10 +25,6 @@ namespace SportEU.Infra
 
             modelBuilder.Entity<GroupAssignmentData>()
                 .HasKey(c => new { GroupID = c.GroupId, AthleteID = c.AthleteId });
-
-
-            /* modelBuilder.Entity<CourseAssignment>()
-            .HasKey(c => new { c.CourseID, c.InstructorID }); Võib mitu mitmele seose jaoks vaja minna.*/
         }
     }
 }

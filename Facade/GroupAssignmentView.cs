@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Facade
 {
-    public sealed class CourseAssignmentView
+    public sealed class GroupAssignmentView
     {
         public string GroupId { get; set; }
-        public int? Number { get; set; }
         public string Name { get; set; }
     }
 }

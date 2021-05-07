@@ -24,15 +24,14 @@ namespace SportEU.Domain
         public ICollection<GroupAssignment> GroupAssignments => groupAssignments?.Value;
         internal Lazy<ICollection<GroupAssignment>> groupAssignments { get; }
 
-        public void AddCourse(string courseId)
+        public void AddGroup(string groupId)
         {
-            if (courseId is not null) NewlyAssignedGroups?.Add(courseId);
+            if (groupId is not null) NewlyAssignedGroups?.Add(groupId);
         }
 
 
         public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;
-        public string CoachId => Data?.CoachId ?? "Unspecified";
 
     }
 }

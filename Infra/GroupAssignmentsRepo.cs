@@ -9,7 +9,7 @@ namespace SportEU.Infra
         : PagedRepo<GroupAssignment, GroupAssignmentData>// ,IGroupAssignmentsRepo
     {
         public GroupAssignmentsRepo() : this(null) { }
-        public GroupAssignmentsRepo(ApplicationDbContext c) : base(c, c?.CourseAssignments) { }
+        public GroupAssignmentsRepo(ApplicationDbContext c) : base(c, c?.GroupAssignments) { }
         protected internal override GroupAssignment toEntity(GroupAssignmentData d) => new(d);
         protected internal override GroupAssignmentData toData(GroupAssignment s) => s?.Data ?? new GroupAssignmentData();
 

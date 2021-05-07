@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SportEU.Pages.Common.BasePage
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Details";
 }
@@ -6,13 +7,14 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <h4>@ViewData["Page"]</h4>
+    <h4>@Model.PageTitle</h4>
     <hr />
     <dl class="row">
         @RenderBody()
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.@ViewData["ItemId"]">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="form-group">
+    <a asp-page="./Edit" asp-route-handler="Edit" asp-route-id="@Model.Item.Id">Edit</a>
+    &nbsp;
+    <a asp-page="./Index" asp-route-handler="Index">Back to List</a>
 </div>

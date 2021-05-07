@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Facade;
 using SportEU.Facade.Common;
@@ -20,10 +19,6 @@ namespace SportEU.Facade
             ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Strength { get; set; }
 
-        [Display(Name = "Groups")] public List<CourseAssignmentView> AthleteGroups { get; set; }
-
-        [DisplayName("Coach")] public string CoachId { get; set; }
-
-        [Display(Name = "Coach")] public string CoachName { get; set; }
+        [Display(Name = "Groups")] public List<GroupAssignmentView> AthleteGroups { get; set; }
     }
 }

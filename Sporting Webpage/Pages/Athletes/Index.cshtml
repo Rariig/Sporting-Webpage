@@ -7,30 +7,37 @@
 }
 
 
-@*<table class="table">
+<table class="table">
     <thead>
         <tr>
-            @Html.TableHeader(x => x.Item.LastName)
             @Html.TableHeader(x => x.Item.FirstMidName)
-           @Html.TableHeader(x => x.Item.StartingDate)
+            @Html.TableHeader(x => x.Item.LastName)
+            @Html.TableHeader(x => x.Item.StartingDate)
             @Html.TableHeader(x => x.Item.Strength)
-            @Html.TableHeader(x => x.Item.GroupName)
-            @Html.TableHeader(x => x.Item.CoachName)
+            <th>Groups</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
     @foreach (var i in Model.Items) {
-        <tr>
-            @Html.RowData(x => i.LastName)
+
+        string selectedRow = "";
+
+        <tr class="@selectedRow">
             @Html.RowData(x => i.FirstMidName)
+            @Html.RowData(x => i.LastName)
             @Html.RowData(x => i.StartingDate)
             @Html.RowData(x => i.Strength)
-            @Html.RowData(x => i.GroupName)
-            @Html.RowData(x => i.CoachName)
-            @Html.RowButtons(Model.PageUrl, $"{i.Id}")
+            <td>
+                @foreach (var course in i.AthleteGroups)
+                {
+                    @course.Name
+                    <br />
+                }
+            </td>
+            @Html.RowButtons(Model.PageUrl, $"{i.Id}", "Select")
         </tr>
     }
     </tbody>
 
-</table>*@
+</table>

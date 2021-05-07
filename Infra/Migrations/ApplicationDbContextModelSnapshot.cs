@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEU.Infra;
 
-namespace SportEU.Infra.Migrations
+namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -19,20 +19,14 @@ namespace SportEU.Infra.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.AthleteData", b =>
+            modelBuilder.Entity("SportEU.Data.AthleteData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CoachId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstMidName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("GroupId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
@@ -63,7 +57,7 @@ namespace SportEU.Infra.Migrations
                     b.ToTable("Athletes");
                 });
 
-            modelBuilder.Entity("Data.CoachData", b =>
+            modelBuilder.Entity("SportEU.Data.CoachData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -104,7 +98,28 @@ namespace SportEU.Infra.Migrations
                     b.ToTable("Coaches");
                 });
 
-            modelBuilder.Entity("Data.GroupData", b =>
+            modelBuilder.Entity("SportEU.Data.GroupAssignmentData", b =>
+                {
+                    b.Property<string>("GroupId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AthleteId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("GroupId", "AthleteId");
+
+                    b.ToTable("GroupAssignments");
+                });
+
+            modelBuilder.Entity("SportEU.Data.GroupData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");

@@ -1,8 +1,8 @@
 ﻿@using SportEU.Core.Extensions
 @model SportEU.Pages.AthletesPage
 
-@Html.Editor(model => model.Item.LastName)
 @Html.Editor(model => model.Item.FirstMidName)
+@Html.Editor(model => model.Item.LastName)
 @Html.Editor(model => model.Item.StartingDate)
 @Html.Editor(model => model.Item.Strength)
 
@@ -10,26 +10,26 @@
     <div class="table">
         <table>
             <tr>
-            @{
-                int cnt = 0;
-                foreach (var group in Model.Groups)
-                {
-                    if (cnt++ % 3 == 0)
+                @{
+                    int cnt = 0;
+                    foreach (var group in Model.Groups)
                     {
+                        if (cnt++ % 3 == 0)
+                        {
                         @:</tr><tr>
+                        }
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedGroups"
+                                   value="@group.Value"
+                                   @(Html.Raw(Model.IsAssigned(group) ? "checked=\"checked\"" : "")) />
+                            @group.Text
+                        @:</td>
                     }
-                    @:<td>
-                    <input type="checkbox"
-                           name="selectedCourses"
-                           value="@group.Value"
-                           @(Html.Raw(Model.IsAssigned(group) ? "checked=\"checked\"" : "")) />
-                    @group.Text
-                    @:</td>
-                }
                 @:</tr>
-            }
-        </table>
+                }
+            </table>
+        </div>
     </div>
-</div>
-@*@@Html.Select(model => model.Item.GroupId,
-    Model.Group, "-- Select Department --")*@
+    @*@@Html.Select(model => model.Item.GroupId,
+        Model.Group, "-- Select Department --")*@

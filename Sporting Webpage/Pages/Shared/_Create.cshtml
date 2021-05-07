@@ -1,26 +1,31 @@
-﻿@{
+﻿@model SportEU.Pages.Common.BasePage
+
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Create";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<h4>@ViewData["Page"]</h4>
+<h4>@Model.PageTitle</h4>
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            @RenderBody()
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<p class="text-danger">@Model.ErrorMessage</p>
+
+<form enctype="multipart/form-data" id="createForm" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <dl class="row">
+
+        @RenderBody()
+
+    </dl>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
     </div>
-</div>
+</form>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index" asp-route-handler="Index">Back to List</a>
 </div>
 
 @section Scripts {
