@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Data;
+using SportEU.Data;
 using SportEU.Infra;
 
 namespace SportEU.Pages.Coaches

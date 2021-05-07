@@ -1,4 +1,4 @@
-﻿namespace Data.Common
+﻿namespace SportEU.Data.Common
 {
     public abstract class AthleteAssignmentData : BaseData
     {

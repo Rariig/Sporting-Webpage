@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Data;
-using Domain.Common;
-using Domain.Repos;
-using Infra.Common;
+using SportEU.Data;
+using SportEU.Domain.Common;
+using SportEU.Domain.Repos;
 using SportEU.Domain;
 using SportEU.Infra;
+using SportEU.Infra.Common;
 
-namespace Infra
+namespace SportEU.Infra
 {
     public sealed class GroupsRepo:PagedRepo<Group,GroupData>, IGroupsRepo
     {

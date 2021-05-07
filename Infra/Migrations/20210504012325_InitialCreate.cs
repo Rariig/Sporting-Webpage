@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Infra.Migrations
+namespace SportEU.Infra.Migrations
 {
     public partial class InitialCreate : Migration
     {

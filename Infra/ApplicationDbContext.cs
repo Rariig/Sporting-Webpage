@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Data;
+using SportEU.Data;
 
 namespace SportEU.Infra
 {
@@ -14,12 +14,18 @@ namespace SportEU.Infra
         public DbSet<CoachData> Coaches { get; set; }
         public DbSet<AthleteData> Athletes { get; set; }
         public DbSet<GroupData> Groups { get; set; }
+        public DbSet<GroupAssignmentData> CourseAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CoachData>().ToTable("Coaches");
             modelBuilder.Entity<AthleteData>().ToTable("Athletes");
             modelBuilder.Entity<GroupData>().ToTable("Groups");
+            modelBuilder.Entity<GroupAssignmentData>().ToTable("GroupAssignments");
+
+            modelBuilder.Entity<GroupAssignmentData>()
+                .HasKey(c => new { GroupID = c.GroupId, AthleteID = c.AthleteId });
+
 
             /* modelBuilder.Entity<CourseAssignment>()
             .HasKey(c => new { c.CourseID, c.InstructorID }); Võib mitu mitmele seose jaoks vaja minna.*/

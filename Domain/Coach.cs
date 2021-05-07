@@ -1,7 +1,7 @@
 ﻿using System;
-using Data;
-using Domain.Common;
-using Domain.Repos;
+using SportEU.Data;
+using SportEU.Domain.Common;
+using SportEU.Domain.Repos;
 
 namespace SportEU.Domain
 {
@@ -11,7 +11,7 @@ namespace SportEU.Domain
 
         public Coach(CoachData d) : base(d)
         {
-            group = getLazy<Group, IGroupsRepo>(x => x?.GetById(GroupId));
+            group = getLazy<Group, IGroupsRepo>(x => x?.Get(GroupId));
         }
 
 

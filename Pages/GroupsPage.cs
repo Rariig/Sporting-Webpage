@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using Data;
-using Domain.Repos;
-using Facade;
-using Infra;
+using SportEU.Data;
+using SportEU.Domain.Repos;
+using SportEU.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;

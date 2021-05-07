@@ -1,23 +1,34 @@
 ﻿using System;
-using Data;
-using Domain.Common;
-using Domain.Repos;
+using System.Collections.Generic;
+using SportEU.Data;
+using SportEU.Domain.Common;
+using System.Linq;
+using SportEU.Domain.Repos;
 
 namespace SportEU.Domain
 {
     public sealed class Athlete : Person<AthleteData>
     {
+
+        public List<string> NewlyAssignedGroups { get; } = new();
         public Athlete() : this(null) { }
 
         public Athlete(AthleteData d) : base(d)
         {
-             //group = getLazy<Group, IGroupsRepo>(x => x?.Get(GroupId));
+            groupAssignments = getLazy<GroupAssignment, IGroupAssignmentsRepo>(x => x?.GetByAthleteId(Id));
         }
 
-        //public string GroupId => Data?.GroupId ?? "Unspecified";
 
-        //public Group Group => group.Value;
-        //internal Lazy<Group> group { get; } gruppe peaks saama ikka tickboxiga lisada siin vist
+
+        public ICollection<Group> Groups => GroupAssignments?.Select(x => x.Group).ToList();
+        public ICollection<GroupAssignment> GroupAssignments => groupAssignments?.Value;
+        internal Lazy<ICollection<GroupAssignment>> groupAssignments { get; }
+
+        public void AddCourse(string courseId)
+        {
+            if (courseId is not null) NewlyAssignedGroups?.Add(courseId);
+        }
+
 
         public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;

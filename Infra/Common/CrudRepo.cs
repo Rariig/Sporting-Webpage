@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Data.Common;
+using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Common
+namespace SportEU.Infra.Common
 {
     public abstract class CrudRepo<TEntity, TData> : BaseRepo<TEntity, TData>
         where TData : BaseData, IEntityData, new()

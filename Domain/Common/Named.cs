@@ -1,7 +1,7 @@
 ﻿using Core;
 using SportEU.Domain;
 
-namespace Domain.Common
+namespace SportEU.Domain.Common
 {
     public abstract class Named<TData> : BaseEntity<TData>
         where TData : class, INamedEntityData, new()

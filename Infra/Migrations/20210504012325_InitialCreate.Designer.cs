@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEU.Infra;
 
-namespace Infra.Migrations
+namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210504012325_InitialCreate")]

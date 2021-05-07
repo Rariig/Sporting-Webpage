@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Facade.Common;
+using SportEU.Facade.Common;
 
-namespace Facade
+namespace SportEU.Facade
 {
     public class AthleteView :PersonView
     {

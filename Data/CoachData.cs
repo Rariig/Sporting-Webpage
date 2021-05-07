@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Data.Common;
+using SportEU.Data.Common;
 
-namespace Data
+namespace SportEU.Data
 {
     public class CoachData : PersonData
     {

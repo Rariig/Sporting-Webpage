@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using SportEU.Facade;
 
-namespace Facade.Common
+namespace SportEU.Facade.Common
 {
     public abstract class NamedView : BaseView
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Domain.Common
+namespace SportEU.Domain.Common
 {
     public sealed class GetRepo
     {

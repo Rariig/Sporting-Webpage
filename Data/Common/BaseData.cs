@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Core;
 
-namespace Data.Common
+namespace SportEU.Data.Common
 {
-    public abstract class BaseData : IEntityData
-    {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+    public abstract class BaseData : UniqueItem, IEntityData
+    { 
         [Timestamp] public byte[] RowVersion { get; set; }
     }
 }

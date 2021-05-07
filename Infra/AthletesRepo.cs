@@ -1,11 +1,11 @@
 ﻿
-using Data;
-using Domain.Repos;
-using Infra.Common;
+using SportEU.Data;
+using SportEU.Domain.Repos;
 using SportEU.Domain;
 using SportEU.Infra;
+using SportEU.Infra.Common;
 
-namespace Infra
+namespace SportEU.Infra
 {
     public sealed class AthletesRepo : PagedRepo<Athlete, AthleteData>, IAthletesRepo
     {

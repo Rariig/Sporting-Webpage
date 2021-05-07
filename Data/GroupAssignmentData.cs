@@ -1,8 +1,8 @@
-﻿using Data.Common;
+﻿using SportEU.Data.Common;
 
-namespace Data
+namespace SportEU.Data
 {
-    public sealed class CourseAssignmentData : AthleteAssignmentData
+    public sealed class GroupAssignmentData : AthleteAssignmentData
     {
         public string GroupId { get; set; }
     }

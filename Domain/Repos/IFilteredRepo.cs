@@ -1,4 +1,4 @@
-﻿namespace Domain.Repos
+﻿namespace SportEU.Domain.Repos
 { 
     public interface IFilteredRepo
     {

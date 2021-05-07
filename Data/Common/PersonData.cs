@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Data.Common
+namespace SportEU.Data.Common
 {
     public abstract class PersonData : BaseData
     {

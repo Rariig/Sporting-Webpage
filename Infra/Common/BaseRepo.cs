@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SportEU.Domain.Repos;
-using Data.Common;
+using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Core;
 
-namespace Infra.Common
+namespace SportEU.Infra.Common
 {
     public abstract class BaseRepo<TEntity, TData> : BaseRepo<TData>, IRepo<TEntity>
          where TData : BaseData, IEntityData, new()

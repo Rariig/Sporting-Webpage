@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.Common;
+using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Common
+namespace SportEU.Infra.Common
 {
     public abstract class PagedRepo<TEntity, TData> : OrderedRepo<TEntity, TData>
         where TData : BaseData, IEntityData, new()

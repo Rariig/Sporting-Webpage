@@ -1,7 +1,7 @@
 ﻿    using System;
-using Data.Common;
+    using SportEU.Data.Common;
 
-namespace Data
+    namespace SportEU.Data
 {
     public class AthleteData : PersonData
     {

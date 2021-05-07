@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Core;
 
-namespace Data.Common
+namespace SportEU.Data.Common
 {
     public abstract class NamedData : BaseData, INamedEntityData
     {

@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Data.Common;
+using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Aids;
 
-namespace Infra.Common
+namespace SportEU.Infra.Common
 {
     public abstract class OrderedRepo<TEntity, TData> : FilteredRepo<TEntity, TData>
          where TData : BaseData, IEntityData, new()

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using SportEU.Facade;
 
-namespace Facade.Common
+namespace SportEU.Facade.Common
 {
     public class PersonView : BaseView
     {

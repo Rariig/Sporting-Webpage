@@ -1,8 +1,8 @@
-﻿using Data.Common;
+﻿using SportEU.Data.Common;
 using SportEU.Core;
 using SportEU.Domain;
 
-namespace Domain.Common
+namespace SportEU.Domain.Common
 { 
     public interface IPersonEntity : IBaseEntity
     {

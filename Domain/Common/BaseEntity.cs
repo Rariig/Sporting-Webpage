@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SportEU.Domain.Repos;
-using Domain.Common;
+using SportEU.Domain.Common;
 using SportEU.Aids;
 using SportEU.Core;
 
