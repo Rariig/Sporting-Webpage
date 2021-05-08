@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using SportEU.Data;
 using SportEU.Domain;
+using SportEU.Domain.Repos;
 using SportEU.Infra.Common;
 
 namespace SportEU.Infra
 {
     public sealed class GroupAssignmentsRepo
-        : PagedRepo<GroupAssignment, GroupAssignmentData>// ,IGroupAssignmentsRepo
+        : PagedRepo<GroupAssignment, GroupAssignmentData> ,IGroupAssignmentsRepo
     {
         public GroupAssignmentsRepo() : this(null) { }
         public GroupAssignmentsRepo(ApplicationDbContext c) : base(c, c?.GroupAssignments) { }
