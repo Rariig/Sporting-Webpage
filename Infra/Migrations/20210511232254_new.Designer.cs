@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210507221034_Test")]
-    partial class Test
+    [Migration("20210511232254_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,9 +42,6 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<DateTime>("StartingDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
@@ -68,12 +65,6 @@ namespace Infra.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("GroupId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("LastName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -88,6 +79,9 @@ namespace Infra.Migrations
 
                     b.Property<int>("Salary")
                         .HasColumnType("int");
+
+                    b.Property<string>("Speciality")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");

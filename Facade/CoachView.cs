@@ -8,10 +8,6 @@ namespace SportEU.Facade
     public class CoachView : PersonView
     {
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Hiring Date")] 
-        public DateTime HireDate { get; set; }
 
 
         [DataType(DataType.Currency)]
@@ -19,10 +15,7 @@ namespace SportEU.Facade
         [DisplayName("Salary")]
         public decimal Salary { get; set; }
 
-        [DisplayName("Group")] 
-        public int GroupId { get; set; }
-
-        [Display(Name = "Group")]
-        public string GroupName { get; set; }
+        [Display(Name = "Speciality")]
+        public string Speciality { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Facade;
 using SportEU.Data;
@@ -29,6 +30,8 @@ namespace SportEU.Pages
             v.AthleteGroups = new List<GroupAssignmentView>();
             if (a.GroupAssignments is null) return v;
             v.AthleteGroups.AddRange(a.GroupAssignments.Select(toGroupAssignmentView).ToList());
+            var photo = Convert.ToBase64String(a.Data.Photo ?? Array.Empty<byte>(), 0, a.Data.Photo?.Length ?? 0);
+            v.PhotoAsString = "data:image/jpg;base64," + photo;
             return v;
         }
 
@@ -41,6 +44,10 @@ namespace SportEU.Pages
             var obj = new Athlete(d);
             if (v?.AthleteGroups is null) return obj;
             foreach (var c in v.AthleteGroups) obj.AddGroup(c?.GroupId);
+            if (string.IsNullOrEmpty(v.Photo?.FileName)) return obj;
+            var stream = new MemoryStream();
+            v.Photo?.CopyTo(stream);
+            if (stream.Length < 2097152) d.Photo = stream.ToArray();
             return obj;
         }
 

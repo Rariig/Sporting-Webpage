@@ -20,8 +20,5 @@ namespace SportEU.Infra
 
         protected internal override CoachData toData(Coach e) => e?.Data ?? new CoachData();
 
-        public List<Coach> GetByGroupId(string id)
-            => getRelated(x => x.GroupId == id);
-
     }
 }

@@ -1,9 +1,10 @@
 ﻿@using SportEU.Core.Extensions
 @model SportEU.Pages.CoachesPage
 
-@Html.Show(model => model.Item.LastName)
+
 @Html.Show(model => model.Item.FirstMidName)
-@Html.Show(model => model.Item.HireDate)
+@Html.Show(model => model.Item.LastName)
+@Html.Show(model => model.Item.ValidFrom)
 @Html.Show(model => model.Item.Salary)
-@*@Html.Select(model => model.Item.GroupId,
-    Model.Group, "-- Select Department --")*@
+@Html.Show(model => model.Item.Speciality)
+@Html.ShowImage(model => model.Item.PhotoAsString)

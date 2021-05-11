@@ -27,9 +27,9 @@ namespace SportEU
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddTransient<IAthletesRepo, AthletesRepo>();
             services.AddTransient<ICoachesRepo, CoachesRepo>();
             services.AddTransient<IGroupsRepo, GroupsRepo>();

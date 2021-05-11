@@ -1,9 +1,10 @@
 ﻿@using SportEU.Core.Extensions
 @model SportEU.Pages.CoachesPage
 
-@Html.Editor(model => model.Item.LastName)
+
 @Html.Editor(model => model.Item.FirstMidName)
-@Html.Editor(model => model.Item.HireDate)
+@Html.Editor(model => model.Item.LastName)
+@Html.Editor(model => model.Item.ValidFrom)
 @Html.Editor(model => model.Item.Salary)
-@*@@Html.Select(model => model.Item.GroupId,
-    Model.Group, "-- Select Department --")*@
+@Html.Editor(model => model.Item.Speciality)
+@Html.Editor(model => model.Item.Photo)

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using SportEU.Domain.Common;
 using SportEU.Infra;
 
 namespace SportEU
@@ -12,9 +13,8 @@ namespace SportEU
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-
             CreateDbIfNotExists(host);
-
+            GetRepo.SetProvider(host.Services);
             host.Run();
         }
 

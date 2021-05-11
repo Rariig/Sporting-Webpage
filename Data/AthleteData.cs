@@ -5,8 +5,6 @@
 {
     public class AthleteData : PersonData
     {
-
-        public DateTime StartingDate { get; set; }
         public int Strength { get; set; }
     }
 

@@ -9,17 +9,11 @@ namespace SportEU.Domain
     {
         public Coach() : this(null) { }
 
-        public Coach(CoachData d) : base(d)
-        {
-            group = getLazy<Group, IGroupsRepo>(x => x?.GetById(GroupId));
-        }
+        public Coach(CoachData d) : base(d) { }
 
 
-        public DateTime HireDate => Data?.ValidFrom ?? DateTime.MinValue;
         public decimal Salary => Data?.Salary ?? 0;
+        public string Speciality => Data?.Speciality ?? "No speciality";
 
-        public string GroupId => Data?.GroupId ?? "Unspecified";
-        internal Lazy<Group> group { get; }
-        public Group Group=> group.Value;
     }
 }

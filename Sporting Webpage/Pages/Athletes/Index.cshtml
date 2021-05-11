@@ -1,6 +1,7 @@
 ﻿@page
 @model SportEU.Pages.AthletesPage
 @using SportEU.Core.Extensions
+@using System.Security.Cryptography.X509Certificates
 
 @{
     Layout = "_Index";
@@ -12,8 +13,9 @@
         <tr>
             @Html.TableHeader(x => x.Item.FirstMidName)
             @Html.TableHeader(x => x.Item.LastName)
-            @Html.TableHeader(x => x.Item.StartingDate)
+            @Html.TableHeader(x => x.Item.ValidFrom)
             @Html.TableHeader(x => x.Item.Strength)
+            @Html.TableHeader(x => x.Item.PhotoAsString)
             <th>Groups</th>
             <th></th>
         </tr>
@@ -26,12 +28,13 @@
         <tr class="@selectedRow">
             @Html.RowData(x => i.FirstMidName)
             @Html.RowData(x => i.LastName)
-            @Html.RowData(x => i.StartingDate)
+            @Html.RowData(x => i.ValidFrom)
             @Html.RowData(x => i.Strength)
+            @Html.RowImage(i.PhotoAsString)
             <td>
-                @foreach (var course in i.AthleteGroups)
+                @foreach (var group in i.AthleteGroups)
                 {
-                    @course.Name
+                    @group.Name
                     <br />
                 }
             </td>

@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 using SportEU.Facade;
 
 namespace SportEU.Facade.Common
 {
-    public class PersonView : BaseView
+    public abstract class PersonView : BaseView
     {
         [Required]
         [StringLength(50)]
@@ -18,13 +19,15 @@ namespace SportEU.Facade.Common
         [Display(Name = "First Name")]
         public string FirstMidName { get; set; }
 
-        [Display(Name = "Full Name")]
-        public string FullName { get; set; }
+        [Display(Name = "Full Name")] public string FullName { get; set; }
 
-        [Display(Name = "New Photo")]
-        public IFormFile Photo { get; set; }
+        [Display(Name = "New Photo")] public IFormFile Photo { get; set; }
 
-        [Display(Name = "Current Photo")]
-        public string PhotoAsString { get; set; }
+        [Display(Name = "Current Photo")] public string PhotoAsString { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Starting date")]
+        public DateTime ValidFrom { get; set; }
     }
 }
