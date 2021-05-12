@@ -14,5 +14,9 @@ namespace SportEU.Tests.Domain
         [TestMethod]
         public void CoachTest() => lazyTest(() => obj.coach.IsValueCreated,
             () => obj.Coach);
+
+        [TestMethod]
+        public void GroupAssignmentsTest()
+            => lazyTest(() => obj.groupAssignments.IsValueCreated, () => obj.GroupAssignments);
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SportEU.Data.Common;
-using SportEU.Domain;
 using SportEU.Domain.Repos;
 
 namespace SportEU.Domain.Common

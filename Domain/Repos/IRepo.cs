@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using SportEU.Domain.Repos;
 
 namespace SportEU.Domain.Repos
 {
