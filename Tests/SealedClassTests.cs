@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace SportEU.Tests
 {
     public abstract class SealedClassTests<TClass, TBaseClass>

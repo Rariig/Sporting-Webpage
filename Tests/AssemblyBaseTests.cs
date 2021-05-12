@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SportEU.Aids;
 
 namespace SportEU.Tests
 {

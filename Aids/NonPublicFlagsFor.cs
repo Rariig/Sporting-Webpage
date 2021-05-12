@@ -2,7 +2,7 @@
 using System.Reflection;
 
 
-namespace Aids
+namespace SportEU.Aids
 {
     public static class NonPublicFlagsFor
     {

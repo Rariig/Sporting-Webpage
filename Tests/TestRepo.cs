@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SportEU.Core;
 using SportEU.Domain.Repos;
 
-namespace Tests
+namespace SportEU.Tests
 {
     public abstract class TestRepo<TClass> : IRepo<TClass> where TClass : IBaseEntity
     {

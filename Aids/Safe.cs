@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace SportEU.Aids {
     public static class Safe {
         public static T Run<T>(Func<T> function, T valueOnException) {

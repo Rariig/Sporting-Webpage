@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using SportEU.Aids;
 
-namespace Aids
+namespace SportEU.Aids
 {
     public static class Strings
     {

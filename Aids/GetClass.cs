@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using SportEU.Aids;
 
-namespace Aids
+namespace SportEU.Aids
 {
     public static class GetClass
     {

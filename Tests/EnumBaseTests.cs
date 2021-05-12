@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEU.Aids;
-using SportEU.Tests;
 
-namespace Tests
+namespace SportEU.Tests
 {
     public class EnumBaseTests<T> : BaseTests where T : Enum
     {

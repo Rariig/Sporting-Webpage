@@ -5,12 +5,16 @@ using SportEU.Data.Common;
 
 namespace SportEU.Infra
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
+
+        public ApplicationDbContext() : this(
+            new DbContextOptionsBuilder<ApplicationDbContext>().Options)
+        { }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-        }
+        { }
 
         public DbSet<CoachData> Coaches { get; set; }
         public DbSet<AthleteData> Athletes { get; set; }
@@ -19,6 +23,7 @@ namespace SportEU.Infra
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CoachData>().ToTable("Coaches");
             modelBuilder.Entity<AthleteData>().ToTable("Athletes");
             modelBuilder.Entity<PersonData>().ToTable("Person");

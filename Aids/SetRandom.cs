@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+
 namespace SportEU.Aids {
     public static class SetRandom {
 
