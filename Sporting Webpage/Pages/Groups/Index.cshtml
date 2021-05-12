@@ -8,8 +8,8 @@
 <table class="table">
     <thead>
     <tr>
-        @Html.TableHeader(x => x.Item.Name)
-        @Html.TableHeader(x => x.Item.CoachName)
+        @Html.TableSortHeader(x => x.Item.Name,Model)
+        @Html.TableSortHeader(x => x.Item.CoachName,Model)
         <th></th>
     </tr>
     </thead>

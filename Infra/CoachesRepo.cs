@@ -20,5 +20,17 @@ namespace SportEU.Infra
 
         protected internal override CoachData toData(Coach e) => e?.Data ?? new CoachData();
 
+        protected internal override IQueryable<CoachData> applyFilters(IQueryable<CoachData> query)
+        {
+            if (SearchString is null) return query;
+            return query.Where(
+                x => x.FirstMidName.Contains(SearchString) ||
+                     x.LastName.Contains(SearchString) ||
+                     x.Speciality.Contains(SearchString) ||
+                     x.Salary.ToString().Contains(SearchString) ||
+                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)) ||
+                     (x.ValidTo != null && x.ValidFrom.ToString().Contains(SearchString)));
+        }
+
     }
 }

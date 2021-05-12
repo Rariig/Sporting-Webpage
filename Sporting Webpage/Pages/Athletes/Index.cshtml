@@ -1,7 +1,6 @@
 ﻿@page
 @model SportEU.Pages.AthletesPage
 @using SportEU.Core.Extensions
-@using System.Security.Cryptography.X509Certificates
 
 @{
     Layout = "_Index";
@@ -11,10 +10,10 @@
 <table class="table">
     <thead>
         <tr>
-            @Html.TableHeader(x => x.Item.FirstMidName)
-            @Html.TableHeader(x => x.Item.LastName)
-            @Html.TableHeader(x => x.Item.ValidFrom)
-            @Html.TableHeader(x => x.Item.Strength)
+            @Html.TableSortHeader(x => x.Item.FirstMidName, Model)
+            @Html.TableSortHeader(x => x.Item.LastName,Model)
+            @Html.TableSortHeader(x => x.Item.ValidFrom,Model)
+            @Html.TableSortHeader(x => x.Item.Strength,Model)
             @Html.TableHeader(x => x.Item.PhotoAsString)
             <th>Groups</th>
             <th></th>

@@ -1,4 +1,5 @@
 ﻿
+using System.Linq;
 using SportEU.Data;
 using SportEU.Domain.Repos;
 using SportEU.Domain;
@@ -16,14 +17,15 @@ namespace SportEU.Infra
 
         protected internal override AthleteData toData(Athlete e) => e?.Data ?? new AthleteData();
 
-       /* protected internal override IQueryable<AthleteData> applyFilters(IQueryable<AthleteData> query)
+        protected internal override IQueryable<AthleteData> applyFilters(IQueryable<AthleteData> query)
         {
             if (SearchString is null) return query;
             return query.Where(
-                x => x.Name.Contains(SearchString) ||
-                     x.Number.ToString().Contains(SearchString) ||
-                     x.Credits.ToString().Contains(SearchString));
-        } */ 
-       //Saab kasutada otsimiseks, aga datas peab väljad õigeks panema Name jaoks. Teisi pole.
+                x => x.FirstMidName.Contains(SearchString) ||
+                     x.LastName.Contains(SearchString) ||
+                     x.Strength.ToString().Contains(SearchString)||
+                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)) ||
+                     (x.ValidTo != null && x.ValidFrom.ToString().Contains(SearchString)));
+        }
     } 
 }

@@ -11,11 +11,11 @@
 <table class="table">
     <thead>
         <tr>
-            @Html.TableHeader(x => x.Item.FirstMidName)
-            @Html.TableHeader(x => x.Item.LastName)
-            @Html.TableHeader(x => x.Item.ValidFrom)
-            @Html.TableHeader(x => x.Item.Salary)
-            @Html.TableHeader(x => x.Item.Speciality)
+            @Html.TableSortHeader(x => x.Item.FirstMidName,Model)
+            @Html.TableSortHeader(x => x.Item.LastName,Model)
+            @Html.TableSortHeader(x => x.Item.ValidFrom,Model)
+            @Html.TableSortHeader(x => x.Item.Salary,Model)
+            @Html.TableSortHeader(x => x.Item.Speciality,Model)
             @Html.TableHeader(x => x.Item.PhotoAsString)
             <th></th>
         </tr>

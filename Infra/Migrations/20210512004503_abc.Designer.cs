@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210512001553_Migra")]
-    partial class Migra
+    [Migration("20210512004503_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Infra.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SportEU.Data.AthleteData", b =>
+            modelBuilder.Entity("SportEU.Data.Common.PersonData", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -42,9 +42,6 @@ namespace Infra.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<int>("Strength")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("ValidFrom")
                         .HasColumnType("datetime2");
 
@@ -53,45 +50,7 @@ namespace Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Athletes");
-                });
-
-            modelBuilder.Entity("SportEU.Data.CoachData", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FirstMidName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Speciality")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ValidFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ValidTo")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coaches");
+                    b.ToTable("Person");
                 });
 
             modelBuilder.Entity("SportEU.Data.GroupAssignmentData", b =>
@@ -135,6 +94,47 @@ namespace Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("SportEU.Data.AthleteData", b =>
+                {
+                    b.HasBaseType("SportEU.Data.Common.PersonData");
+
+                    b.Property<int>("Strength")
+                        .HasColumnType("int");
+
+                    b.ToTable("Athletes");
+                });
+
+            modelBuilder.Entity("SportEU.Data.CoachData", b =>
+                {
+                    b.HasBaseType("SportEU.Data.Common.PersonData");
+
+                    b.Property<decimal?>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Speciality")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Coaches");
+                });
+
+            modelBuilder.Entity("SportEU.Data.AthleteData", b =>
+                {
+                    b.HasOne("SportEU.Data.Common.PersonData", null)
+                        .WithOne()
+                        .HasForeignKey("SportEU.Data.AthleteData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SportEU.Data.CoachData", b =>
+                {
+                    b.HasOne("SportEU.Data.Common.PersonData", null)
+                        .WithOne()
+                        .HasForeignKey("SportEU.Data.CoachData", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
