@@ -24,7 +24,7 @@ namespace SportEU.Tests
         [TestMethod] public virtual void IsSealedTest() => isFalse(type.IsSealed);
         [TestMethod] public virtual void IsAbstractTest() => isTrue(type.IsAbstract);
         [TestMethod] public virtual void IsClassTest() => isTrue(type.IsClass);
-        protected static void lazyTest<TResult>(Func<bool> isValueCreated, Func<TResult> getValue, bool valueIsNull = true)
+        protected static void lazyTest <TResult>(Func<bool> isValueCreated, Func<TResult> getValue, bool valueIsNull = true)
         {
             isFalse(isValueCreated());
             var d = getValue();
