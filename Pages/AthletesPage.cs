@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Facade;
+using SportEU.Facade;
 using SportEU.Data;
 using SportEU.Domain.Repos;
-using SportEU.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;
