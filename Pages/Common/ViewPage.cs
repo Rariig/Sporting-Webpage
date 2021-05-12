@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SportEU.Core;
@@ -22,7 +19,7 @@ namespace SportEU.Pages.Common
             SearchString = searchString;
             CurrentFilter = currentFilter;
             SortOrder = sortOrder;
-            Items = (await repo.Get()).Select(toViewModel).ToList();
+            Items = (await repo.GetAsync()).Select(toViewModel).ToList();
             return Page();
         }
     }

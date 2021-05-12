@@ -9,7 +9,7 @@ namespace SportEU.Facade
     public class GroupView :NamedView
     {
         [DisplayName("Coach")]
-        public int CoachId { get; set; }
+        public string CoachId { get; set; }
 
         [Display(Name = "Coach")]
         public string CoachName { get; set; }

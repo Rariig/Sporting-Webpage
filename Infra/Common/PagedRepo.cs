@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using SportEU.Domain.Repos;
 
 namespace SportEU.Infra.Common
 {
-    public abstract class PagedRepo<TEntity, TData> : OrderedRepo<TEntity, TData>
+    public abstract class PagedRepo<TEntity, TData> : OrderedRepo<TEntity, TData>, IRepo<TEntity>
         where TData : BaseData, IEntityData, new()
     {
         private int pageIndex;
@@ -20,10 +18,10 @@ namespace SportEU.Infra.Common
             get => pageIndex;
             set => pageIndex = value ?? 1;
         }
-        public override int TotalPages => getTotalPages(PageSize);
-        public override bool HasNextPage => pageIndex < TotalPages;
-        public override bool HasPreviousPage => pageIndex > 1;
-        public override int PageSize { get; set; } = DefaultPageSize;
+        public virtual int TotalPages => getTotalPages(PageSize);
+        public virtual bool HasNextPage => pageIndex < TotalPages;
+        public virtual bool HasPreviousPage => pageIndex > 1;
+        public virtual int PageSize { get; set; } = DefaultPageSize;
         internal int getTotalPages(in int pageSize)
         {
             var count = getItemsCount();

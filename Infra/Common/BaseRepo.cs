@@ -1,72 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using SportEU.Domain.Repos;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using SportEU.Aids;
 using SportEU.Core;
 
 namespace SportEU.Infra.Common
 {
-    public abstract class BaseRepo<TEntity, TData> : BaseRepo<TData>, IRepo<TEntity>
-         where TData : BaseData, IEntityData, new()
-    {
-        protected internal abstract TEntity toEntity(TData d);
-        protected internal abstract TData toData(TEntity e);
-        protected BaseRepo(DbContext c = null, DbSet<TData> s = null) : base(c, s) { }
-        public new TEntity EntityInDb => toEntity(base.EntityInDb);
-        public async new Task<List<TEntity>> Get() => (await base.Get()).Select(toEntity).ToList();
-        public async new Task<TEntity> Get(string id) => toEntity(await base.Get(id));
-        public virtual async Task<bool> Delete(TEntity e) => await Delete(toData(e));
-        public virtual async Task<bool> Add(TEntity e) => await Add(toData(e));
-        public virtual async Task<bool> Update(TEntity e) => await Update(toData(e));
-        public new TEntity GetById(string id) => toEntity(base.GetById(id));
-    }
-
-    public abstract class BaseRepo<T> : IRepo<T> where T : BaseData, IEntityData, new()
+    public abstract class BaseRepo<T>
+        where T : BaseData, IEntityData, new()
     {
         protected internal readonly DbSet<T> dbSet;
         protected internal readonly DbContext db;
         public string ErrorMessage { get; protected set; }
         public T EntityInDb { get; protected set; }
-
         protected BaseRepo(DbContext c = null, DbSet<T> s = null)
         {
             dbSet = s;
             db = c;
         }
-        public async Task<List<T>> Get() => await createSql().ToListAsync();
+        protected internal async Task<List<T>> getAsync() => await createSql().ToListAsync();
+        protected internal List<T> get() => createSql().ToList();
+        protected internal T get(string id)
+        {
+            if (id is null) return null;
+            var o = dbSet?.AsNoTracking().FirstOrDefault(m => m.Id == id);
+            return o;
+        }
         protected internal virtual IQueryable<T> createSql() => dbSet.AsNoTracking();
-        public async Task<T> Get(string id)
+        protected internal async Task<T> getAsync(string id)
         {
             if (id is null) return null;
             if (dbSet is null) return null;
-            return await dbSet.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+            var o = await dbSet.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+            return o;
         }
-        public async Task<bool> Delete(T obj)
+        protected internal async Task<bool> delete(T obj)
         {
-            var isOk = await isEntityOk(obj, ErrorMessages.ConcurrencyOnDelete);
-            if (isOk) dbSet.Remove(obj);
+            var o = await dbSet.FindAsync(obj.Id);
+            var isOk = await isEntityOk(o, ErrorMessages.ConcurrencyOnDelete);
+            if (isOk) dbSet.Remove(o);
             await db.SaveChangesAsync();
             return isOk;
         }
-        public async Task<bool> Add(T obj)
+        protected internal async Task<bool> add(T obj)
         {
             var isOk = await isEntityOk(obj, true);
             if (isOk) await dbSet.AddAsync(obj);
             await db.SaveChangesAsync();
             return isOk;
         }
-        public async Task<bool> Update(T obj)
+        protected internal async Task<bool> update(T obj)
         {
-            var isOk = await isEntityOk(obj, ErrorMessages.ConcurrencyOnEdit);
-            if (isOk) dbSet.Update(obj);
+            var o = await dbSet.FindAsync(obj.Id);
+            Copy.Members(obj, o);
+            var isOk = await isEntityOk(o, ErrorMessages.ConcurrencyOnEdit);
+            if (isOk) dbSet.Update(o);
             await db.SaveChangesAsync();
             return isOk;
         }
-        public T GetById(string id) => Get(id).GetAwaiter().GetResult();
         internal static bool byteArrayCompare(ReadOnlySpan<byte> a1, ReadOnlySpan<byte> a2)
             => a1.SequenceEqual(a2);
         private bool errorMessage(string msg)
@@ -84,7 +78,7 @@ namespace SportEU.Infra.Common
         {
             if (obj is null) return errorMessage("Item is null");
             if (dbSet is null) return errorMessage("DbSet is null");
-            EntityInDb = await Get(obj.Id);
+            EntityInDb = await getAsync(obj.Id);
             return (EntityInDb is null) == isNewItem
                    || errorMessage(
                        isNewItem
@@ -97,15 +91,6 @@ namespace SportEU.Infra.Common
             return byteArrayCompare(obj?.RowVersion, EntityInDb?.RowVersion)
                    || errorMessage(concurrencyErrorMsg);
         }
-        public abstract int? PageIndex { get; set; }
-        public abstract int TotalPages { get; }
-        public abstract bool HasNextPage { get; }
-        public abstract bool HasPreviousPage { get; }
-        public abstract int PageSize { get; set; }
-        public abstract string CurrentFilter { get; set; }
-        public abstract string SearchString { get; set; }
-        public abstract string SortOrder { get; set; }
 
-        public abstract string CurrentSort { get; }
     }
 }

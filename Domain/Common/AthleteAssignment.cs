@@ -14,7 +14,7 @@ namespace SportEU.Domain.Common
     {
         protected AthleteAssignment() : this(null) { }
         protected AthleteAssignment(TData d) : base(d) =>
-            athlete = getLazy<Athlete,IAthletesRepo>(x => x?.GetById(AthleteId));
+            athlete = getLazy<Athlete,IAthletesRepo>(x => x?.Get(AthleteId));
         public string AthleteId => Data?.AthleteId ?? "Unspecified";
 
         public Athlete Athlete => athlete.Value;

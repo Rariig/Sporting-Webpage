@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Aids;
+using SportEU.Domain.Repos;
 
 namespace SportEU.Infra.Common
 {
-    public abstract class OrderedRepo<TEntity, TData> : FilteredRepo<TEntity, TData>
-         where TData : BaseData, IEntityData, new()
+    public abstract class OrderedRepo<TEntity, TData> : FilteredRepo<TEntity, TData>, IOrderedRepo
+        where TData : BaseData, IEntityData, new()
     {
         private string sortOrder;
         protected OrderedRepo(DbContext c = null, DbSet<TData> s = null) : base(c, s) { }
-        public override string SortOrder
+        public virtual string SortOrder
         {
             get => getSortOrder();
             set => sortOrder = value;
         }
-        public override string CurrentSort => sortOrder;
+        public virtual string CurrentSort => sortOrder;
 
         protected internal virtual string getSortOrder()
             => sortOrder?.Contains("_desc") ?? true ? removeDesc(sortOrder) : addDesc(sortOrder);

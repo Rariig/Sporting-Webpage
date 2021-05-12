@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using SportEU.Domain.Repos;
 
 namespace SportEU.Infra.Common
 {
-    public abstract class FilteredRepo<TEntity, TData> : CrudRepo<TEntity, TData>
+    public abstract class FilteredRepo<TEntity, TData> : CrudRepo<TEntity, TData>, IFilteredRepo
         where TData : BaseData, IEntityData, new()
     {
         private string currentFilter;
@@ -16,12 +13,15 @@ namespace SportEU.Infra.Common
         protected FilteredRepo(DbContext c = null, DbSet<TData> s = null) : base(c, s) { }
         protected internal override IQueryable<TData> createSql() => applyFilters(base.createSql());
         protected internal virtual IQueryable<TData> applyFilters(IQueryable<TData> query) => query;
-        public override string CurrentFilter
+
+        public virtual int? PageIndex { get; set; }
+
+        public virtual string CurrentFilter
         {
             get => currentFilter;
             set => setFilter(value, searchString);
         }
-        public override string SearchString
+        public virtual string SearchString
         {
             get => searchString;
             set => setFilter(currentFilter, value);
