@@ -31,7 +31,6 @@
   <ItemGroup>
     <Folder Include="Core\Extensions\" />
     <Folder Include="Infra\" />
-    <Folder Include="Pages\" />
     <Folder Include="Soft\" />
   </ItemGroup>
 
