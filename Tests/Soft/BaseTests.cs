@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-namespace Tests.Soft
+namespace Tests
 {
     public abstract class BaseTests
     {

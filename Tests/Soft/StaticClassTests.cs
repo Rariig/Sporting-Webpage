@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace Tests.Soft
+namespace Tests
 {
     public abstract class StaticClassTests : BaseTests
     {

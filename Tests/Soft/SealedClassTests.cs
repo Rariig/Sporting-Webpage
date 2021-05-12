@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace Tests.Soft
+namespace Tests
 {
     public abstract class SealedClassTests<TClass, TBaseClass>
         : ClassTests<TClass, TBaseClass>

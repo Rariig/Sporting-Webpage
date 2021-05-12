@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Facade
+namespace SportEU.Facade
 {
     public sealed class GroupAssignmentView
     {

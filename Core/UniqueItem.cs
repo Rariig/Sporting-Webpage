@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core
+namespace SportEU.Core
 {
     public abstract class UniqueItem
     {
