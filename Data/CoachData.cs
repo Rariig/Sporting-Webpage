@@ -8,7 +8,7 @@ namespace SportEU.Data
     public class CoachData : PersonData
     {
 
-        public int Salary { get; set; }
+        public decimal? Salary { get; set; }
         public string Speciality { get; set; }
 
     }

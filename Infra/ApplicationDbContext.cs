@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Data;
+using SportEU.Data.Common;
 
 namespace SportEU.Infra
 {
@@ -20,9 +21,9 @@ namespace SportEU.Infra
         {
             modelBuilder.Entity<CoachData>().ToTable("Coaches");
             modelBuilder.Entity<AthleteData>().ToTable("Athletes");
+            modelBuilder.Entity<PersonData>().ToTable("Person");
             modelBuilder.Entity<GroupData>().ToTable("Groups");
             modelBuilder.Entity<GroupAssignmentData>().ToTable("GroupAssignments");
-
             modelBuilder.Entity<GroupAssignmentData>()
                 .HasKey(c => new { GroupID = c.GroupId, AthleteID = c.AthleteId });
         }

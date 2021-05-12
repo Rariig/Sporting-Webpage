@@ -13,7 +13,5 @@ namespace SportEU.Facade
 
         [Display(Name = "Coach")]
         public string CoachName { get; set; }
-
-        [Display(Name = "Athletes")] public List<Athlete> Athletes { get; set; }
     }
 }

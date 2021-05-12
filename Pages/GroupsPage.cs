@@ -31,18 +31,12 @@ namespace SportEU.Pages
         {
             var d = Copy.Members(v, new GroupData());
             var obj = new Group(d);
-            if (v?.Athletes is null) return obj;
-            foreach (var c in v.Athletes) obj.AddAthlete(c?.Id);
             return obj;
         }
-
 
         public SelectList Coaches =>
             new(context.Coaches.OrderBy(x => x.LastName).AsNoTracking(),
                 "Id", "LastName", Item?.CoachId);
-        public SelectList Athletes =>
-            new(context.Athletes.OrderBy(x => x.LastName).AsNoTracking(),
-                "Id", "LastName", Item?.Id);
 
     }
 }

@@ -1,54 +1,25 @@
 ﻿@page
-@model SportEU.Pages.Groups.IndexModel
-
+@model SportEU.Pages.GroupsPage
+@using SportEU.Core.Extensions
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Page"] = "Groups";
+    Layout = "_Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupData[0].CoachId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupData[0].AthleteId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupData[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupData[0].RowVersion)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        @Html.TableHeader(x => x.Item.Name)
+        @Html.TableHeader(x => x.Item.CoachName)
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.GroupData) {
+    @foreach (var i in Model.Items) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoachId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AthleteId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RowVersion)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            @Html.RowData(x => i.Name)
+            @Html.RowData(x => i.CoachName)
+            @Html.RowButtons(Model.PageUrl, $"{i.Id}")
         </tr>
-}
+    }
     </tbody>
 </table>

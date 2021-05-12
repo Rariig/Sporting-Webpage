@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210511232254_new")]
-    partial class @new
+    [Migration("20210512001553_Migra")]
+    partial class Migra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,9 +119,6 @@ namespace Infra.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AthleteId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoachId")
                         .HasColumnType("nvarchar(max)");
