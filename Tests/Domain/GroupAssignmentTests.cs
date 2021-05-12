@@ -11,8 +11,7 @@ namespace SportEU.Tests.Domain
         AthleteAssignment<GroupAssignmentData>>
     {
 
-        protected override GroupAssignment getObject()
-            => new(GetRandom.ObjectOf<GroupAssignmentData>());
+        protected override GroupAssignment getObject() => new(GetRandom.ObjectOf<GroupAssignmentData>());
 
         [TestMethod] public void GroupIdTest() => isReadOnlyProperty(obj.Data.GroupId);
 

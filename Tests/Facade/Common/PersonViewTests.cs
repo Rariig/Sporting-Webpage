@@ -14,6 +14,7 @@ namespace SportEU.Tests.Facade.Common
         protected override PersonView getObject() => GetRandom.ObjectOf<testClass>();
         [TestMethod] public void LastNameTest() => isReadWriteProperty<string>();
         [TestMethod] public void FirstMidNameTest() => isReadWriteProperty<string>();
+        [TestMethod] public void AgeTest() => isReadWriteProperty<int>();
         [TestMethod] public void FullNameTest() => isReadWriteProperty<string>();
         [TestMethod] public void PhotoTest() => isProperty<IFormFile>();
         [TestMethod] public void PhotoAsStringTest() => isReadWriteProperty<string>();

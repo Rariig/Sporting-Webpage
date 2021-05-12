@@ -12,6 +12,8 @@ namespace SportEU.Tests.Data.Common
         protected override PersonData getObject() => GetRandom.ObjectOf<testClass>();
         [TestMethod] public void LastNameTest() => isReadWriteProperty<string>();
         [TestMethod] public void FirstMidNameTest() => isReadWriteProperty<string>();
+
+        [TestMethod] public void AgeTest() => isReadWriteProperty<int>();
         [TestMethod] public void PhotoTest() => isReadWriteProperty<byte[]>();
         [TestMethod] public void ValidFromTest() => isReadWriteProperty<DateTime?>();
     }
