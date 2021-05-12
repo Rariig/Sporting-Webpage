@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Data\" />
     <Folder Include="Infra\" />
     <Folder Include="Pages\" />
     <Folder Include="Soft\" />

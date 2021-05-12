@@ -3,7 +3,7 @@
 
 namespace SportEU.Data
 {
-    public class GroupData : NamedData
+    public sealed class GroupData : NamedData
     {
         public string CoachId { get; set; }
     }

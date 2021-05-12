@@ -5,7 +5,7 @@ using SportEU.Facade.Common;
 
 namespace SportEU.Facade
 {
-    public class AthleteView :PersonView
+    public sealed class AthleteView :PersonView
     {
 
 
