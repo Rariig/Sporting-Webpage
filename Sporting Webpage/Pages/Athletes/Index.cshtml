@@ -11,9 +11,10 @@
     <thead>
         <tr>
             @Html.TableSortHeader(x => x.Item.FirstMidName, Model)
-            @Html.TableSortHeader(x => x.Item.LastName,Model)
-            @Html.TableSortHeader(x => x.Item.ValidFrom,Model)
-            @Html.TableSortHeader(x => x.Item.Strength,Model)
+            @Html.TableSortHeader(x => x.Item.LastName, Model)
+            @Html.TableSortHeader(x => x.Item.Age, Model)
+            @Html.TableSortHeader(x => x.Item.ValidFrom, Model)
+            @Html.TableSortHeader(x => x.Item.Strength, Model)
             @Html.TableHeader(x => x.Item.PhotoAsString)
             <th>Groups</th>
             <th></th>
@@ -27,6 +28,7 @@
         <tr class="@selectedRow">
             @Html.RowData(x => i.FirstMidName)
             @Html.RowData(x => i.LastName)
+            @Html.RowData(x => i.Age)
             @Html.RowData(x => i.ValidFrom)
             @Html.RowData(x => i.Strength)
             @Html.RowImage(i.PhotoAsString)

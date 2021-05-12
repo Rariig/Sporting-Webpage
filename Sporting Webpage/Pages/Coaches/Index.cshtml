@@ -11,25 +11,27 @@
 <table class="table">
     <thead>
         <tr>
-            @Html.TableSortHeader(x => x.Item.FirstMidName,Model)
-            @Html.TableSortHeader(x => x.Item.LastName,Model)
-            @Html.TableSortHeader(x => x.Item.ValidFrom,Model)
-            @Html.TableSortHeader(x => x.Item.Salary,Model)
-            @Html.TableSortHeader(x => x.Item.Speciality,Model)
+            @Html.TableSortHeader(x => x.Item.FirstMidName, Model)
+            @Html.TableSortHeader(x => x.Item.LastName, Model)
+            @Html.TableSortHeader(x => x.Item.Age, Model)
+            @Html.TableSortHeader(x => x.Item.ValidFrom, Model)
+            @Html.TableSortHeader(x => x.Item.Salary, Model)
+            @Html.TableSortHeader(x => x.Item.Speciality, Model)
             @Html.TableHeader(x => x.Item.PhotoAsString)
             <th></th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.Items) {
+    @foreach (var i in Model.Items) {
         <tr>
-            @Html.RowData(x => item.FirstMidName)
-            @Html.RowData(x => item.LastName)
-            @Html.RowData(x => item.ValidFrom)
-            @Html.RowData(x => item.Salary)
-            @Html.RowData(x => item.Speciality)
-            @Html.RowImage(item.PhotoAsString)
-            @Html.RowButtons(Model.PageUrl, $"{ item.Id}")
+            @Html.RowData(x => i.FirstMidName)
+            @Html.RowData(x => i.LastName)
+            @Html.RowData(x => i.Age)
+            @Html.RowData(x => i.ValidFrom)
+            @Html.RowData(x => i.Salary)
+            @Html.RowData(x => i.Speciality)
+            @Html.RowImage(i.PhotoAsString)
+            @Html.RowButtons(Model.PageUrl, $"{ i.Id}")
         </tr>
     }
     </tbody>

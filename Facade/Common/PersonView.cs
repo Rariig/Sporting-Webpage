@@ -19,6 +19,10 @@ namespace SportEU.Facade.Common
         [Display(Name = "First Name")]
         public string FirstMidName { get; set; }
 
+
+        [Range(10, 110, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        public int Age { get; set; }
+
         [Display(Name = "Full Name")] public string FullName { get; set; }
 
         [Display(Name = "New Photo")] public IFormFile Photo { get; set; }

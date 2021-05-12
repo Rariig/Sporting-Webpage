@@ -24,6 +24,9 @@ namespace Infra.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstMidName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -41,9 +44,6 @@ namespace Infra.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<DateTime?>("ValidFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

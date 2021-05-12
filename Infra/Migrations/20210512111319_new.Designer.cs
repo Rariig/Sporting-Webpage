@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210512004503_abc")]
-    partial class abc
+    [Migration("20210512111319_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,9 @@ namespace Infra.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstMidName")
                         .HasMaxLength(50)
@@ -43,9 +46,6 @@ namespace Infra.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<DateTime?>("ValidFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

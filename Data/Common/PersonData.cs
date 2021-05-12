@@ -8,8 +8,8 @@ namespace SportEU.Data.Common
     {
         [StringLength(50)] public string LastName { get; set; }
         [StringLength(50)] public string FirstMidName { get; set; }
+        public int Age { get; set; }
         public byte[] Photo { get; set; }
         public DateTime? ValidFrom { get; set; }
-        public DateTime? ValidTo { get; set; }
     }
 }

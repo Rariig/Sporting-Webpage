@@ -12,10 +12,10 @@ namespace SportEU.Facade
 
         [DataType(DataType.Currency)]
         [Range(1, 15000, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
-        [DisplayName("Salary")]
         public decimal Salary { get; set; }
 
-        [Display(Name = "Speciality")]
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z '-]*$")]
         public string Speciality { get; set; }
     }
 }

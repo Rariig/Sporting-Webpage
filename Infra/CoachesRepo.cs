@@ -28,8 +28,8 @@ namespace SportEU.Infra
                      x.LastName.Contains(SearchString) ||
                      x.Speciality.Contains(SearchString) ||
                      x.Salary.ToString().Contains(SearchString) ||
-                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)) ||
-                     (x.ValidTo != null && x.ValidFrom.ToString().Contains(SearchString)));
+                     x.Age.ToString().Contains(SearchString) ||
+                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)));
         }
 
     }

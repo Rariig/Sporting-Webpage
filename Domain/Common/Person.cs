@@ -9,6 +9,7 @@ namespace SportEU.Domain.Common
         public string LastName { get; }
         public string FirstMidName { get; }
         public string FullName { get; }
+        public int Age { get; }
     }
     public abstract class Person<TData> : BaseEntity<TData>, IPersonEntity
         where TData : PersonData, new()
@@ -24,5 +25,7 @@ namespace SportEU.Domain.Common
                 return LastName + ", " + FirstMidName;
             }
         }
+
+        public int Age => Data?.Age ?? 20;
     }
 }

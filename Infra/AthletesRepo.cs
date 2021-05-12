@@ -1,12 +1,10 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SportEU.Data;
 using SportEU.Domain.Repos;
 using SportEU.Domain;
 using SportEU.Domain.Common;
-using SportEU.Infra;
 using SportEU.Infra.Common;
 
 namespace SportEU.Infra
@@ -88,9 +86,9 @@ namespace SportEU.Infra
             return query.Where(
                 x => x.FirstMidName.Contains(SearchString) ||
                      x.LastName.Contains(SearchString) ||
+                     x.Age.ToString().Contains(SearchString) ||
                      x.Strength.ToString().Contains(SearchString)||
-                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)) ||
-                     (x.ValidTo != null && x.ValidFrom.ToString().Contains(SearchString)));
+                     (x.ValidFrom != null && x.ValidFrom.ToString().Contains(SearchString)));
         }
     } 
 }
