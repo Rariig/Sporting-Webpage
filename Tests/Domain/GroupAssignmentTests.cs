@@ -16,8 +16,8 @@ namespace SportEU.Tests.Domain
 
         [TestMethod] public void GroupIdTest() => isReadOnlyProperty(obj.Data.GroupId);
 
-       /* [TestMethod]
+        [TestMethod]
         public void GroupTest() => lazyTest(() => obj.group.IsValueCreated,
-            () => obj.Group); */
+            () => obj.Group);
     }
 }

@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+	  <RootNamespace>SportEU.Tests</RootNamespace>
+
+	  <AssemblyName>SportEU.Tests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

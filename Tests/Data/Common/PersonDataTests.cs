@@ -2,9 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEU.Aids;
 using SportEU.Data.Common;
-using SportEU.Tests;
 
-namespace Tests.Data.Common
+namespace SportEU.Tests.Data.Common
 {
     [TestClass]
     public class PersonDataTests : AbstractClassTests<PersonData, BaseData>
