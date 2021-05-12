@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace Tests
+namespace SportEU.Tests
 {
     public abstract class StaticClassTests : BaseTests
     {

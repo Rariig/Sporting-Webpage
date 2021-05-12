@@ -4,7 +4,7 @@ using SportEU.Facade;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-namespace Tests.Facade.Common
+namespace SportEU.Tests.Facade.Common
 {
     [TestClass]
     public class PersonViewTests : AbstractClassTests<PersonView, BaseView>

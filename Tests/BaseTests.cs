@@ -1,13 +1,15 @@
-﻿using SportEU.Aids;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-namespace Tests
+using Aids;
+
+namespace SportEU.Tests
 {
     public abstract class BaseTests
     {
+        private static System.Reflection.BindingFlags allFlags => PublicFlagsFor.All | NonPublicFlagsFor.All;
         protected static void areEqual<TExpected, TActual>(TExpected e, TActual a) => Assert.AreEqual(e, a);
         protected static void areEqual<TExpected, TActual>(TExpected e, TActual a, string s) => Assert.AreEqual(e, a, s);
         protected static void areNotEqual<TExpected, TActual>(TExpected e, TActual a) => Assert.AreNotEqual(e, a);
@@ -27,6 +29,19 @@ namespace Tests
         protected static void notTested(string message) => Assert.Inconclusive(message);
         protected static void notTested(string message, params object[] parameters)
             => Assert.Inconclusive(message, parameters);
+        protected static void isReadOnly(object o, string propertyName, object expected)
+        {
+            var actual = isReadOnly(o, propertyName);
+            areEqual(expected, actual);
+        }
+        protected static object isReadOnly(object o, string propertyName)
+        {
+            var p = o.GetType().GetProperty(propertyName, allFlags);
+            isNotNull(p);
+            isFalse(p?.CanWrite ?? true);
+            isTrue(p?.CanRead ?? false);
+            return p?.GetValue(o);
+        }
         protected static string getPropertyAfter(string methodName)
         {
             var stack = new StackTrace();
@@ -52,6 +67,32 @@ namespace Tests
                 if (n == methodName) break;
             }
             return i;
+        }
+        protected static void equalProperties(object x, object y, params string[] except)
+        {
+            foreach (var property in x.GetType().GetProperties(PublicFlagsFor.Instance))
+            {
+                var name = property.Name;
+                if (except.Contains(name)) continue;
+                var p = y.GetType().GetProperty(name, PublicFlagsFor.Instance);
+                isNotNull(p, $"No property with name '{name}' found.");
+                var expected = property.GetValue(x);
+                var actual = p?.GetValue(y);
+                areEqual(expected, actual, $"For property'{name}'.");
+            }
+        }
+        protected static void notEqualProperties(object x, object y)
+        {
+            foreach (var property in x.GetType().GetProperties(PublicFlagsFor.Instance))
+            {
+                var name = property.Name;
+                var p = y.GetType().GetProperty(name, PublicFlagsFor.Instance);
+                isNotNull(p, $"No property with name '{name}' found.");
+                var expected = property.GetValue(x);
+                var actual = p?.GetValue(y);
+                if (expected != actual) return;
+            }
+            fail("All properties are same");
         }
         protected static void htmlContains(IReadOnlyList<object> actual, IReadOnlyList<string> expected)
         {

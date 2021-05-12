@@ -1,7 +1,7 @@
 ﻿using SportEU.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Facade
+namespace SportEU.Tests.Facade
 {
     [TestClass]
     public class CourseAssignmentViewTests : SealedClassTests<GroupAssignmentView, object>

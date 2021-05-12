@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Reflection;
 
-namespace Tests
+namespace SportEU.Tests
 {
     public abstract class AbstractClassTests<TClass, TBaseClass> : StaticClassTests
     where TClass : class

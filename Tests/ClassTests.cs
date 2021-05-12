@@ -1,6 +1,6 @@
 ﻿using SportEU.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace Tests
+namespace SportEU.Tests
 {
     public abstract class ClassTests<TClass, TBaseClass>
         : AbstractClassTests<TClass, TBaseClass>

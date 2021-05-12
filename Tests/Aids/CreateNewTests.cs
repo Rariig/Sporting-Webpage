@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Tests.Aids
+namespace SportEU.Tests.Aids
 {
     [TestClass]
     public class CreateNewTests : StaticClassTests

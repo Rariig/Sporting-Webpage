@@ -1,7 +1,7 @@
 ﻿using SportEU.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Aids
+namespace SportEU.Tests.Aids
 {
     [TestClass]
     public class GetEnumTests

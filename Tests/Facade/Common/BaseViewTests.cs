@@ -3,7 +3,7 @@ using SportEU.Core;
 using SportEU.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Facade.Common
+namespace SportEU.Tests.Facade.Common
 {
     [TestClass]
     public class BaseViewTests : AbstractClassTests<BaseView, UniqueItem>

@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Sporting Webpage\Soft.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Soft\" />
+  </ItemGroup>
+
 </Project>
