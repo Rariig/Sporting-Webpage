@@ -20,14 +20,14 @@ namespace SportEU.Tests
         protected abstract TEntity createEntity(TData d);
         protected abstract TRepo createRepo(ApplicationDbContext c);
 
-        //[TestInitialize]
-        //public override void TestInitialize()
-        //{
-        //    base.TestInitialize();
-        //    var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-        //        .UseInMemoryDatabase("TestDb").Options;
-        //    obj = createRepo(new ApplicationDbContext(options));
-        //}
+        [TestInitialize]
+        public override void TestInitialize()
+        {
+            base.TestInitialize();
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase("TestDb").Options;
+            obj = createRepo(new ApplicationDbContext(options));
+        }
 
         [TestMethod]
         public void ToDataTest()

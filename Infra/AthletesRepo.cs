@@ -51,10 +51,10 @@ namespace SportEU.Infra
         internal static async Task updateGroupAssignments(Athlete i)
         {
             await removeGroupAssignments(i?.GroupAssignments, i?.NewlyAssignedGroups);
-            await addCourseAssignments(i);
+            await addGroupAssignments(i);
         }
         
-        internal static async Task addCourseAssignments(Athlete i)
+        internal static async Task addGroupAssignments(Athlete i)
         {
             if (i is null) return;
             var r = new GetRepo().Instance<IGroupAssignmentsRepo>();
