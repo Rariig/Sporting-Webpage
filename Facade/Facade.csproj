@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>SportEU.Facade</AssemblyName>
+    <RootNamespace>SportEU.Facade</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
