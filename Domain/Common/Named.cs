@@ -1,5 +1,4 @@
-﻿using Core;
-using SportEU.Domain;
+﻿using SportEU.Core;
 
 namespace SportEU.Domain.Common
 {

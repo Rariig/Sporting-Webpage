@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Core;
+using SportEU.Core;
 
 namespace SportEU.Data.Common
 {
