@@ -30,7 +30,7 @@ namespace SportEU.Domain
         }
 
 
-        public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
+       // public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;
 
     }

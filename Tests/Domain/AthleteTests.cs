@@ -16,7 +16,7 @@ namespace SportEU.Tests.Domain
 
         [TestMethod] public void NewlyAssignedGroupsTest() => isReadOnlyProperty(obj.NewlyAssignedGroups);
 
-        [TestMethod] public void StartingDateTest() => isReadOnlyProperty(obj.StartingDate);
+       // [TestMethod] public void StartingDateTest() => isReadOnlyProperty(obj.StartingDate);
 
         [TestMethod] public void StrengthTest() => isReadOnlyProperty(obj.Strength);
 

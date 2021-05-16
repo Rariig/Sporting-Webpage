@@ -21,6 +21,15 @@ namespace SportEU.Pages
         public AthletesPage(ApplicationDbContext c) : this(new AthletesRepo(c), c) { }
 
         protected internal AthletesPage(IAthletesRepo r, ApplicationDbContext c = null) : base(r, c) { }
+
+        public SelectList Groups =>
+            new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
+                "Id", "Name");
+
+        public bool IsAssigned(SelectListItem item)
+            => Item?.AthleteGroups?
+                .FirstOrDefault(x =>
+                    x.GroupId == item.Value) is not null;
         protected internal override AthleteView toViewModel(Athlete a)
         {
             if (isNull(a)) return null;
@@ -50,31 +59,23 @@ namespace SportEU.Pages
             return obj;
         }
 
-        public SelectList Groups =>
-            new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
-                "Id", "Name");
-
-        public bool IsAssigned(SelectListItem item)
-            => Item?.AthleteGroups?
-                .FirstOrDefault(x =>
-                    x.GroupId == item.Value) is not null;
-
-        protected internal override void doBeforeCreate(AthleteView v, string[] selectedCourses = null)
+        
+        protected internal override void doBeforeCreate(AthleteView v, string[] selectedGroups = null)
         {
             if (isNull(v)) return;
             var assignments = new List<GroupAssignmentView>();
-            foreach (var course in selectedCourses ?? Array.Empty<string>())
+            foreach (var group in selectedGroups ?? Array.Empty<string>())
             {
-                var courseToAdd = new GroupAssignmentView
+                var groupToAdd = new GroupAssignmentView
                 {
-                    GroupId = course
+                    GroupId = group
                 };
-                assignments.Add(courseToAdd);
+                assignments.Add(groupToAdd);
             }
 
             v.AthleteGroups = assignments;
         }
-        protected internal override void doBeforeEdit(AthleteView v, string[] selectedCourses = null)
-            => doBeforeCreate(v, selectedCourses);
+        protected internal override void doBeforeEdit(AthleteView v, string[] selectedGroups = null)
+            => doBeforeCreate(v, selectedGroups);
     } 
 }
