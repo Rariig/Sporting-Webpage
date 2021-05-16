@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEU.Aids;
+using SportEU.Core;
 using SportEU.Data.Common;
 using SportEU.Domain;
 using SportEU.Domain.Repos;

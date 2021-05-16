@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using SportEU.Core;
 using SportEU.Domain.Repos;
 
 namespace SportEU.Infra.Common

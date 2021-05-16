@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using SportEU.Core;
 
 namespace SportEU.Infra.Common
 {

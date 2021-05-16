@@ -1,4 +1,6 @@
-﻿namespace Core
+﻿using SportEU.Core;
+
+namespace Core
 {
     public interface INamedEntityData : IEntityData
     { 
