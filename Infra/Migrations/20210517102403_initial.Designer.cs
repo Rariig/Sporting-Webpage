@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEU.Infra;
 
-namespace Infra.Migrations
+namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210512231758_test")]
-    partial class test
+    [Migration("20210517102403_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -21,33 +21,33 @@ namespace SportEU.Infra
 
         public override async Task<bool> DeleteAsync(Athlete e)
         {
-            await removeAssignments(e);
+            await updateGroupAssignments(e);
             var isOk = await base.DeleteAsync(e);
             await db.SaveChangesAsync();
             return isOk;
         }
         public override async Task<bool> AddAsync(Athlete e)
         {
-            await updateAssignments(e);
+            await updateGroupAssignments(e);
             var isOk = await base.AddAsync(e);
             await db.SaveChangesAsync();
             return isOk;
         }
         public override async Task<bool> UpdateAsync(Athlete e)
         {
-            await updateAssignments(e);
+            await updateGroupAssignments(e);
             var isOk = await base.UpdateAsync(e);
             await db.SaveChangesAsync();
             return isOk;
         }
-        internal static async Task removeAssignments(Athlete e)
-        {
-            await removeGroupAssignments(e?.GroupAssignments);
-        }
-        internal static async Task updateAssignments(Athlete i)
-        {
-            await updateGroupAssignments(i);
-        }
+        //internal static async Task removeAssignments(Athlete e)
+        //{
+        //    await removeGroupAssignments(e?.GroupAssignments);
+        //}
+        //internal static async Task updateAssignments(Athlete i)
+        //{
+        //    await updateGroupAssignments(i);
+        //}
         internal static async Task updateGroupAssignments(Athlete i)
         {
             await removeGroupAssignments(i?.GroupAssignments, i?.NewlyAssignedGroups);
@@ -66,7 +66,7 @@ namespace SportEU.Infra
                 await r.AddAsync(new GroupAssignment(d));
             }
         }
-        
+
         private static async Task removeGroupAssignments(
             IEnumerable<GroupAssignment> l, ICollection<string> doNotRemove = null)
         {
