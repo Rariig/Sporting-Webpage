@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
+using SportEU.Domain.Common;
 using SportEU.Infra;
 
 namespace SportEU.Pages
@@ -22,9 +23,18 @@ namespace SportEU.Pages
 
         protected internal AthletesPage(IAthletesRepo r, ApplicationDbContext c = null) : base(r, c) { }
 
-        public SelectList Groups =>
-            new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
-                "Id", "Name");
+        //public SelectList Groups =>
+        //    new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
+        //        "Id", "Name");
+
+        public SelectList Groups
+        {
+            get
+            {
+                var l = new GetRepo().Instance<IGroupsRepo>().Get();
+                return new SelectList(l, "Id", "Name", Item?.AthleteGroups);
+            }
+        }
 
         public bool IsAssigned(SelectListItem item)
             => Item?.AthleteGroups?

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
+using SportEU.Domain.Common;
 using SportEU.Infra;
 
 namespace SportEU.Pages
@@ -34,9 +35,14 @@ namespace SportEU.Pages
             return obj;
         }
 
-        public SelectList Coaches =>
-            new(context.Coaches.OrderBy(x => x.LastName).AsNoTracking(),
-                "Id", "LastName", Item?.CoachId);
+        public SelectList Coaches
+        {
+            get
+            {
+                var l = new GetRepo().Instance<ICoachesRepo>().Get();
+                return new SelectList(l, "Id", "LastName", Item?.CoachId);
+            }
+        }
 
     }
 }

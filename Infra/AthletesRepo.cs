@@ -80,6 +80,8 @@ namespace SportEU.Infra
         }
 
 
+
+
         protected internal override IQueryable<AthleteData> applyFilters(IQueryable<AthleteData> query)
         {
             if (SearchString is null) return query;
