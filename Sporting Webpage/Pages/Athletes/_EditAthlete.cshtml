@@ -12,25 +12,25 @@
     <div class="table">
         <table>
             <tr>
-                @{
-                    int cnt = 0;
-                    foreach (var group in Model.Groups)
+            @{
+                int cnt = 0;
+                foreach (var group in Model.Groups)
+                {
+                    if (cnt++ % 3 == 0)
                     {
-                        if (cnt++ % 3 == 0)
-                        {
                         @:</tr><tr>
-                        }
-                        @:<td>
-                            <input type="checkbox"
-                                   name="selectedGroups"
-                                   value="@group.Value"
-                                   @(Html.Raw(Model.IsAssigned(group) ? "checked=\"checked\"" : "")) />
-                            @group.Text
-                        @:</td>
                     }
-                @:</tr>
+                    @:<td>
+                    <input type="checkbox"
+                           name="selectedGroups"
+                           value="@group.Value"
+                           @(Html.Raw(Model.IsAssigned(group) ? "checked=\"checked\"" : "")) />
+                    @group.Text
+                    @:</td>
                 }
-            </table>
-        </div>
+                @:</tr>
+            }
+        </table>
     </div>
+</div>
 

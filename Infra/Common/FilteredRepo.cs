@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using SportEU.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using SportEU.Core;
@@ -39,5 +41,24 @@ namespace SportEU.Infra.Common
             => searchString = searchStr ?? curFilter;
         protected internal virtual void setPageIndex(string searchStr)
             => PageIndex = (searchStr == null) ? PageIndex : 1;
+
+
+        // TODO panna repod seda otsimismeetodit kasutama
+        //internal Expression<Func<TData, bool>> createWhereExpression()
+        //{
+        //    var param = Expression.Parameter(typeof(TData), "s");
+        //    Expression predicate = null;
+        //    foreach (var p in typeof(TData).GetProperties())
+        //    {
+        //        Expression body = Expression.Property(param, p);
+        //        if (p.PropertyType == typeof(bool)) continue;
+        //        if (p.PropertyType.IsEnum) continue;
+        //        if (p.PropertyType != typeof(string))
+        //            body = Expression.Call(body, "ToString", null);
+        //        body = Expression.Call(body, "Contains", null, Expression.Constant(SearchString));
+        //        predicate = predicate is null ? body : Expression.Or(predicate, body);
+        //    }
+        //    return predicate is null ? null : Expression.Lambda<Func<TData, bool>>(predicate, param);
+        //}
     }
 }

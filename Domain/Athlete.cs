@@ -29,8 +29,7 @@ namespace SportEU.Domain
             if (groupId is not null) NewlyAssignedGroups?.Add(groupId);
         }
 
-
-       // public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
+        public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
         public int Strength => Data?.Strength ?? 0;
 
     }

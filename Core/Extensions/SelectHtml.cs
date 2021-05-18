@@ -38,8 +38,6 @@ namespace SportEU.Core.Extensions {
                 var stack = ex.StackTrace;
                 ;
             }
-
-
             return l;
         }
     }

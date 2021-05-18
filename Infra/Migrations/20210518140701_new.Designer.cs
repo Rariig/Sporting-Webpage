@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210517102403_initial")]
-    partial class initial
+    [Migration("20210518140701_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

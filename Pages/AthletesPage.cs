@@ -26,7 +26,6 @@ namespace SportEU.Pages
         //public SelectList Groups =>
         //    new(context.Groups.OrderBy(x => x.Name).AsNoTracking(),
         //        "Id", "Name");
-
         public SelectList Groups
         {
             get
@@ -40,11 +39,12 @@ namespace SportEU.Pages
             => Item?.AthleteGroups?
                 .FirstOrDefault(x =>
                     x.GroupId == item.Value) is not null;
+
         protected internal override AthleteView toViewModel(Athlete a)
         {
             if (isNull(a)) return null;
             var v = Copy.Members(a.Data, new AthleteView());
-            v.FullName = a.FullName;
+           // v.FullName = a.FullName;
             v.AthleteGroups = new List<GroupAssignmentView>();
             if (a.GroupAssignments is null) return v;
             v.AthleteGroups.AddRange(a.GroupAssignments.Select(toGroupAssignmentView).ToList());

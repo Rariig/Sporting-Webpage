@@ -5,8 +5,9 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using SportEU.Domain.Common;
 using SportEU.Infra;
+using SportEU.Infra.Common;
 
-namespace SportEU
+namespace SportEU.Soft
 {
     public class Program
     {
@@ -20,20 +21,18 @@ namespace SportEU
 
         private static void CreateDbIfNotExists(IHost host)
         {
-            using (var scope = host.Services.CreateScope())
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            try
             {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
-                    context.Database.EnsureCreated();
-                    // DbInitializer.Initialize(context);
-                }
-                catch (Exception ex)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred creating the DB.");
-                }
+                var context = services.GetRequiredService<ApplicationDbContext>();
+                context.Database.EnsureCreated();
+                DbInitializer.Initialize(context);
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred creating the DB.");
             }
         }
 

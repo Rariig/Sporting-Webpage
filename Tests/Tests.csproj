@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="Core\Extensions\" />
-    <Folder Include="Soft\" />
   </ItemGroup>
 
 </Project>
