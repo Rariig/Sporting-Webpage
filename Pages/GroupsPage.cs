@@ -31,8 +31,7 @@ namespace SportEU.Pages
         protected internal override Group toEntity(GroupView v)
         {
             var d = Copy.Members(v, new GroupData());
-            var obj = new Group(d);
-            return obj;
+            return new Group(d);
         }
 
         public SelectList Coaches

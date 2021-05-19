@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
-using SportEU.Facade;
 
 namespace SportEU.Facade.Common
 {
@@ -19,7 +18,7 @@ namespace SportEU.Facade.Common
         [Display(Name = "First Name")]
         public string FirstMidName { get; set; }
 
-
+        [Display(Name = "Age")]
         [Range(10, 110, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Age { get; set; }
 

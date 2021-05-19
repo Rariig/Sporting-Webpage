@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SportEU.Facade;
 
 namespace SportEU.Facade.Common
 {

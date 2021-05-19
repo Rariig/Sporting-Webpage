@@ -18,6 +18,8 @@ namespace SportEU.Domain
             groupAssignments = getLazy<GroupAssignment, IGroupAssignmentsRepo>(x => x?.GetByAthleteId(Id));
         }
 
+        public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
+        public int Strength => Data?.Strength ?? 0;
 
 
         public ICollection<Group> Groups => GroupAssignments?.Select(x => x.Group).ToList();
@@ -29,8 +31,7 @@ namespace SportEU.Domain
             if (groupId is not null) NewlyAssignedGroups?.Add(groupId);
         }
 
-        public DateTime StartingDate => Data?.ValidFrom ?? DateTime.MinValue;
-        public int Strength => Data?.Strength ?? 0;
+ 
 
     }
 }

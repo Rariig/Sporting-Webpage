@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SportEU.Data;
 using SportEU.Data.Common;
+using AthleteData = SportEU.Data.AthleteData;
 
 namespace SportEU.Infra
 {

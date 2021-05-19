@@ -21,7 +21,7 @@ namespace SportEU.Infra
 
         public override async Task<bool> DeleteAsync(Athlete e)
         {
-            await updateGroupAssignments(e);
+            await removeGroupAssignments(e?.GroupAssignments,e?.NewlyAssignedGroups);
             var isOk = await base.DeleteAsync(e);
             await db.SaveChangesAsync();
             return isOk;
@@ -49,7 +49,7 @@ namespace SportEU.Infra
         //    await updateGroupAssignments(i);
         //}
         internal static async Task updateGroupAssignments(Athlete i)
-        {
+        { 
             await removeGroupAssignments(i?.GroupAssignments, i?.NewlyAssignedGroups);
             await addGroupAssignments(i);
         }
