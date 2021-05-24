@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210519203833_abc")]
-    partial class abc
+    [Migration("20210524231538_new2")]
+    partial class new2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -271,7 +271,7 @@ namespace SportEU.Infra.Migrations
 
                     b.HasKey("GroupId", "AthleteId");
 
-                    b.ToTable("GroupAssignments");
+                    b.ToTable("GroupAssignment");
                 });
 
             modelBuilder.Entity("SportEU.Data.GroupData", b =>
@@ -293,7 +293,7 @@ namespace SportEU.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Group");
                 });
 
             modelBuilder.Entity("SportEU.Data.AthleteData", b =>
@@ -303,7 +303,7 @@ namespace SportEU.Infra.Migrations
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
-                    b.ToTable("Athletes");
+                    b.ToTable("Athlete");
                 });
 
             modelBuilder.Entity("SportEU.Data.CoachData", b =>
@@ -316,7 +316,7 @@ namespace SportEU.Infra.Migrations
                     b.Property<string>("Speciality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Coaches");
+                    b.ToTable("Coach");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

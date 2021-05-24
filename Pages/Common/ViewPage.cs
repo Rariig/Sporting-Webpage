@@ -12,7 +12,7 @@ namespace SportEU.Pages.Common
         where TView : class, IEntityData, new()
     {
         protected ViewPage(IRepo<TEntity> r, ApplicationDbContext c = null) : base(r, c) { }
-        public async virtual Task<IActionResult> OnGetIndexAsync(string sortOrder,
+        public virtual async Task<IActionResult> OnGetIndexAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
         {
             PageIndex = pageIndex;

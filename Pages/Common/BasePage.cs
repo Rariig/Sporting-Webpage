@@ -78,9 +78,9 @@ namespace SportEU.Pages.Common
             if (transaction != null) await transaction.CommitAsync();
             return true;
         }
-        protected internal virtual void doBeforeCreate(TView v, string[] selectedCourses = null) { }
+        protected internal virtual void doBeforeCreate(TView v, string[] selectedGroups = null) { }
         protected internal virtual void doBeforeDelete(TView v) { }
-        protected internal virtual void doBeforeEdit(TView v, string[] selectedCourses = null) { }
+        protected internal virtual void doBeforeEdit(TView v, string[] selectedGroups = null) { }
 
         internal IActionResult indexPage() =>
             RedirectToPage("./Index", new { handler = "Index" });
@@ -96,7 +96,7 @@ namespace SportEU.Pages.Common
             doOnCreate();
             return Page();
         }
-        public async virtual Task<IActionResult> OnPostDeleteAsync(string id)
+        public virtual async Task<IActionResult> OnPostDeleteAsync(string id)
         {
             doBeforeDelete(Item);
             if (await save(remove)) return indexPage();
@@ -104,20 +104,20 @@ namespace SportEU.Pages.Common
             return RedirectToPage("./Delete",
                 new { id, concurrencyError = true, handler = "Delete" });
         }
-        public async virtual Task<IActionResult> OnPostEditAsync(string id, string[] selectedCourses = null)
+        public virtual async Task<IActionResult> OnPostEditAsync(string id, string[] selectedGroups = null)
         {
             if (!ModelState.IsValid) return Page();
-            doBeforeEdit(Item, selectedCourses);
+            doBeforeEdit(Item, selectedGroups);
             if (await save(update)) return indexPage();
             setPreviousValues(toViewModel(repo?.EntityInDb));
             Item.RowVersion = repo?.EntityInDb?.RowVersion;
             ModelState.Remove("Item.RowVersion");
             return Page();
         }
-        public async virtual Task<IActionResult> OnPostCreateAsync(string[] selectedCourses = null)
+        public virtual async Task<IActionResult> OnPostCreateAsync(string[] selectedGroups = null)
         {
             if (!ModelState.IsValid) return Page();
-            doBeforeCreate(Item, selectedCourses);
+            doBeforeCreate(Item, selectedGroups);
             if (await save(add)) return indexPage();
             return Page();
         }

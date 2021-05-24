@@ -25,13 +25,11 @@ namespace SportEU.Infra
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<CoachData>().ToTable("Coaches");
-            modelBuilder.Entity<AthleteData>().ToTable("Athletes");
+            modelBuilder.Entity<CoachData>().ToTable("Coach");
+            modelBuilder.Entity<AthleteData>().ToTable("Athlete");
             modelBuilder.Entity<PersonData>().ToTable("Person");
-            modelBuilder.Entity<GroupData>().ToTable("Groups");
-            modelBuilder.Entity<GroupAssignmentData>().ToTable("GroupAssignments");
-            modelBuilder.Entity<GroupAssignmentData>()
-                .HasKey(c => new { GroupID = c.GroupId, AthleteID = c.AthleteId });
+            modelBuilder.Entity<GroupData>().ToTable("Group");
+            modelBuilder.Entity<GroupAssignmentData>().ToTable("GroupAssignment").HasKey(g => new { GroupID = g.GroupId, AthleteID = g.AthleteId });
         }
     }
 }

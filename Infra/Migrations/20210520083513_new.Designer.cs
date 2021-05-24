@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEU.Infra;
 
 namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210520083513_new")]
+    partial class @new
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,7 +271,7 @@ namespace SportEU.Infra.Migrations
 
                     b.HasKey("GroupId", "AthleteId");
 
-                    b.ToTable("GroupAssignment");
+                    b.ToTable("GroupAssignments");
                 });
 
             modelBuilder.Entity("SportEU.Data.GroupData", b =>
@@ -291,7 +293,7 @@ namespace SportEU.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Group");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("SportEU.Data.AthleteData", b =>
@@ -301,7 +303,7 @@ namespace SportEU.Infra.Migrations
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
-                    b.ToTable("Athlete");
+                    b.ToTable("Athletes");
                 });
 
             modelBuilder.Entity("SportEU.Data.CoachData", b =>
@@ -314,7 +316,7 @@ namespace SportEU.Infra.Migrations
                     b.Property<string>("Speciality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Coach");
+                    b.ToTable("Coaches");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
