@@ -17,7 +17,7 @@ namespace SportEU.Facade
         [Required(ErrorMessage = "You must provide a phone number")]
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^(\d{8,10})$", ErrorMessage = "Not a valid phone number")] // panin lihtsa validationi esialgu, need raskemad ei tahtnud toimida nii nagu ma tahtsin
+        [RegularExpression(@"^(\d{8,10})$", ErrorMessage = "Not a valid phone number. Enter without spaces and country code.")] // panin lihtsa validationi esialgu, need raskemad ei tahtnud toimida nii nagu ma tahtsin
         public string PhoneNumber { get; set; }
     }
 }
