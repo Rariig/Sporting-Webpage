@@ -13,5 +13,6 @@ namespace SportEU.Tests.Domain
 
         [TestMethod] public void SalaryTest() => isReadOnlyProperty(obj.Data.Salary);
         [TestMethod] public void SpecialityTest() => isReadOnlyProperty(obj.Data.Speciality);
+        [TestMethod] public void PhoneNumberTest() => isReadOnlyProperty(obj.Data.PhoneNumber);
     }
 }

@@ -308,6 +308,9 @@ namespace SportEU.Infra.Migrations
                 {
                     b.HasBaseType("SportEU.Data.Common.PersonData");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 

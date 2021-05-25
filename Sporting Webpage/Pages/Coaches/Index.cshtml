@@ -17,6 +17,7 @@
             @Html.TableSortHeader(x => x.Item.ValidFrom, Model)
             @Html.TableSortHeader(x => x.Item.Salary, Model)
             @Html.TableSortHeader(x => x.Item.Speciality, Model)
+            @Html.TableHeader(x => x.Item.PhoneNumber)
             @Html.TableHeader(x => x.Item.PhotoAsString)
             <th></th>
         </tr>
@@ -30,6 +31,7 @@
             @Html.RowData(x => i.ValidFrom)
             @Html.RowData(x => i.Salary)
             @Html.RowData(x => i.Speciality)
+            @Html.RowData(x => i.PhoneNumber)
             @Html.RowImage(i.PhotoAsString)
             @Html.RowButtons(Model.PageUrl, $"{ i.Id}")
         </tr>

@@ -25,6 +25,7 @@ namespace SportEU.Pages
             v.FullName = c.FullName;
             v.Salary = c.Salary;
             v.Speciality = c.Speciality;
+            v.PhoneNumber = c.PhoneNumber;
             var photo = Convert.ToBase64String(c.Data.Photo ?? Array.Empty<byte>(), 0, c.Data.Photo?.Length ?? 0);
             v.PhotoAsString = "data:image/jpg;base64," + photo;
             return v;

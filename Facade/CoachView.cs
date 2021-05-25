@@ -13,5 +13,11 @@ namespace SportEU.Facade
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z '-]*$")]
         public string Speciality { get; set; }
+
+        [Required(ErrorMessage = "You must provide a phone number")]
+        [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^(\d{8,10})$", ErrorMessage = "Not a valid phone number")] // panin lihtsa validationi esialgu, need raskemad ei tahtnud toimida nii nagu ma tahtsin
+        public string PhoneNumber { get; set; }
     }
 }

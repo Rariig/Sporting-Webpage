@@ -47,21 +47,7 @@ namespace SportEU.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GroupAssignments",
-                columns: table => new
-                {
-                    AthleteId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    GroupId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GroupAssignments", x => new { x.GroupId, x.AthleteId });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Groups",
+                name: "Group",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -71,7 +57,21 @@ namespace SportEU.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.PrimaryKey("PK_Group", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GroupAssignment",
+                columns: table => new
+                {
+                    AthleteId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    GroupId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroupAssignment", x => new { x.GroupId, x.AthleteId });
                 });
 
             migrationBuilder.CreateTable(
@@ -198,7 +198,7 @@ namespace SportEU.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Athletes",
+                name: "Athlete",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -206,9 +206,9 @@ namespace SportEU.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Athletes", x => x.Id);
+                    table.PrimaryKey("PK_Athlete", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Athletes_Person_Id",
+                        name: "FK_Athlete_Person_Id",
                         column: x => x.Id,
                         principalTable: "Person",
                         principalColumn: "Id",
@@ -216,18 +216,19 @@ namespace SportEU.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Coaches",
+                name: "Coach",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Speciality = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Speciality = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coaches", x => x.Id);
+                    table.PrimaryKey("PK_Coach", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Coaches_Person_Id",
+                        name: "FK_Coach_Person_Id",
                         column: x => x.Id,
                         principalTable: "Person",
                         principalColumn: "Id",
@@ -292,16 +293,16 @@ namespace SportEU.Infra.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Athletes");
+                name: "Athlete");
 
             migrationBuilder.DropTable(
-                name: "Coaches");
+                name: "Coach");
 
             migrationBuilder.DropTable(
-                name: "GroupAssignments");
+                name: "Group");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "GroupAssignment");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

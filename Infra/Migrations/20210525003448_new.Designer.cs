@@ -10,8 +10,8 @@ using SportEU.Infra;
 namespace SportEU.Infra.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210524231538_new2")]
-    partial class new2
+    [Migration("20210525003448_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -309,6 +309,9 @@ namespace SportEU.Infra.Migrations
             modelBuilder.Entity("SportEU.Data.CoachData", b =>
                 {
                     b.HasBaseType("SportEU.Data.Common.PersonData");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");

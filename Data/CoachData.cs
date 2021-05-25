@@ -7,6 +7,7 @@ namespace SportEU.Data
 
         public decimal Salary { get; set; }
         public string Speciality { get; set; }
+        public string PhoneNumber { get; set; }
 
     }
 }

@@ -9,5 +9,6 @@ namespace SportEU.Tests.Data
     {
         [TestMethod] public void SalaryTest() => isReadWriteProperty<decimal>();
         [TestMethod] public void SpecialityTest() => isReadWriteProperty<string>();
+        [TestMethod] public void PhoneNumberTest() => isReadWriteProperty<string>();
     }
 }

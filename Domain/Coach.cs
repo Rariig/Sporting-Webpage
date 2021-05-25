@@ -14,6 +14,7 @@ namespace SportEU.Domain
 
         public decimal Salary => Data?.Salary ?? 0;
         public string Speciality => Data?.Speciality ?? "No speciality";
+        public string PhoneNumber => Data?.PhoneNumber ?? "No phone";
 
     }
 }
