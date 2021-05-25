@@ -7,17 +7,19 @@
 }
 <table class="table">
     <thead>
-    <tr>
-        @Html.TableSortHeader(x => x.Item.Name,Model)
-        @Html.TableSortHeader(x => x.Item.CoachName,Model)
-        <th></th>
-    </tr>
+        <tr>
+            @Html.TableSortHeader(x => x.Item.Name, Model)
+            @Html.TableSortHeader(x => x.Item.CoachName, Model)
+            @Html.TableSortHeader(x => x.Item.Speciality, Model)
+            <th></th>
+        </tr>
     </thead>
     <tbody>
     @foreach (var i in Model.Items) {
         <tr>
             @Html.RowData(x => i.Name)
             @Html.RowData(x => i.CoachName)
+            @Html.RowData(x => i.Speciality)
             @Html.RowButtons(Model.PageUrl, $"{i.Id}")
         </tr>
     }

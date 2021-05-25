@@ -25,6 +25,7 @@ namespace SportEU.Pages
             if (isNull(g)) return null;
             var v = Copy.Members(g.Data, new GroupView());
             v.CoachName = g.Coach?.FullName;
+            v.Speciality = g.Coach?.Speciality;
             return v;
         }
 

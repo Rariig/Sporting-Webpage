@@ -9,5 +9,6 @@ namespace SportEU.Tests.Facade
     {
         [TestMethod] public void CoachIdTest() => isReadWriteProperty<string>();
         [TestMethod] public void CoachNameTest() => isReadWriteProperty<string>();
+        [TestMethod] public void SpecialityTest() => isReadWriteProperty<string>();
     }
 }
