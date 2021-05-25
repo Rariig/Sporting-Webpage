@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using SportEU.Data;
 using SportEU.Domain.Repos;
 using SportEU.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SportEU.Pages.Common;
 using SportEU.Aids;
 using SportEU.Domain;
@@ -35,12 +35,13 @@ namespace SportEU.Pages
             return new Group(d);
         }
 
-        public SelectList Coaches
+        public SelectList Coaches //TODO panna kahe elemendiga list tööle
         {
             get
             {
                 var l = new GetRepo().Instance<ICoachesRepo>().Get();
-                return new SelectList(l, "Id", "LastName", Item?.CoachId);
+
+                return new SelectList(l, "Id", "Speciality", Item?.CoachId);
             }
         }
 

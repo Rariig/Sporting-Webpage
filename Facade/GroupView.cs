@@ -14,5 +14,6 @@ namespace SportEU.Facade
 
         [Display(Name = "Speciality")]
         public string Speciality { get; set; }
+
     }
 }
